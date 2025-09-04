@@ -1,0 +1,21 @@
+class Cursos:
+    def __init__(self, ID, name, code, instructor, list):
+        self.__id = ID
+        self.name = name
+        self.__code = code
+        self.instructor = instructor
+        self.__list = list
+    def inscribir_estudiante(self):
+        pass
+    def get_id(self):
+        return self.__id
+    def set_id(self, ID):
+        self.__id = ID
+    def get_code(self):
+        return self.__code
+    def set_code(self, code):
+        self.__code = code
+    def get_list(self):
+        return self.__list
+    def set_list(self, list):
+        self.__list = list
