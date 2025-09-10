@@ -9,7 +9,7 @@ class Usuario(ABC):
 
     @abstractmethod
     def mostrar_info(self):
-        pass
+        return f"|Nombre: {self.nombre}|Correo: {self.correo}|Fecha de nacimiento: {self.fecha_nacimiento}|Rol: {self.rol}"
 
 class Estudiante(Usuario):
     def __init__(self, nombre, correo, fecha_nacimiento, rol, carnet, carrera):
@@ -18,9 +18,6 @@ class Estudiante(Usuario):
         self.__carrera = carrera
 
     def mostrar_info(self):
-        pass
-
-    def acceder_sistema(self):
         pass
 
     @property
@@ -37,11 +34,22 @@ class Instructor(Usuario):
         self.__codigo_empleado = codigo_empleado
 
     def mostrar_info(self):
-        pass
-
-    def acceder_sistema(self):
-        pass
-
+        return super().mostrar_info()+f"|Codigo de empleado: {self.codigo_empleado}"
     @property
+    def acceder_sistema(self):
+        while True:
+            print("1. Consultar mis cursos asignados")
+            print("2. Ver estudiantes inscritos")
+            print("3. Crear evaluaciones")
+            print("4. Registrar calificaciones")
+            opcion= input("Ingrese una de las opciones: ")
+            match opcion:
+                case "1":
+                    pass
+                case "2":
+                    pass
+                case "3":
+                    pass
+
     def codigo_empleado(self):
         return self.__codigo_empleado
