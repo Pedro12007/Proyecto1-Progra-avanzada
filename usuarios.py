@@ -16,10 +16,12 @@ class Estudiante(Usuario):
         super().__init__(nombre, correo, fecha_nacimiento, rol)
         self.__carnet = carnet
         self.__carrera = carrera
+        self.cursos=[]
+
 
 
     def mostrar_info(self):
-        return super().mostrar_info() + f"Carnet: {self.carnet}"
+        return super().mostrar_info() + f"Carnet: {self.carnet}|Carrera: {self.carrera}"
 
     def acceder_sistema(self):
         while True:
