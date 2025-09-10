@@ -3,7 +3,10 @@ class Cursos:
         self.__id = id
         self.nombre = nombre
         self.instructor = instructor
-        self.__lista = lista
+        self.estudiantes = []
+        self.evaluaciones = []
+
+
     def inscribir_estudiante(self):
         pass
     @property

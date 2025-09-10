@@ -17,6 +17,7 @@ class Estudiante(Usuario):
         self.__carnet = carnet
         self.__carrera = carrera
 
+
     def mostrar_info(self):
         return super().mostrar_info() + f"Carnet: {self.carnet}"
 
@@ -49,6 +50,7 @@ class Instructor(Usuario):
     def __init__(self, nombre, correo, fecha_nacimiento, rol, codigo_empleado):
         super().__init__(nombre, correo, fecha_nacimiento, rol)
         self.__codigo_empleado = codigo_empleado
+        self.cursos_asignados = []
 
     def mostrar_info(self):
         return super().mostrar_info()+f"|Codigo de empleado: {self.codigo_empleado}"
