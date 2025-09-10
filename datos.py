@@ -1,45 +1,54 @@
-class Datos:
-    def __init(self, usuarios, cursos, inscripciones, evaluaciones):
-        self.usuarios = usuarios
-        self.cursos = cursos
-        self.inscripciones = inscripciones
-        self.evaluaciones = evaluaciones
+from abc import ABC, abstractmethod
 
-    def cargar_cursos(self):
+class Datos(ABC):
+    @abstractmethod
+    def cargar_datos(self):
         pass
 
-    def guardar_usuarios(self):
+    @abstractmethod
+    def guardar_datos(self):
         pass
 
-    def cargar_cursos(self):
+class DatosUsuarios(Datos):
+    def __init__(self):
+        self.usuarios = {}
+        self.cargar_datos()
+
+    def cargar_datos(self):
         pass
 
-    def guardar_cursos(self):
+    def guardar_datos(self):
         pass
 
-    def cargar_inscripciones(self):
+class DatosCursos(Datos):
+    def __init__(self):
+        self.cursos = {}
+        self.cargar_datos()
+
+    def cargar_datos(self):
         pass
 
-    def guardar_inscripciones(self):
+    def guardar_datos(self):
         pass
 
-    def cargar_calificaciones(self):
+class DatosInscripciones(Datos):
+    def __init__(self):
+        self.cursos = {}
+        self.cargar_datos()
+
+    def cargar_datos(self):
         pass
 
-    def guardar_calificaciones(self):
+    def guardar_datos(self):
         pass
 
-    def agregar_usuario(self):
+class DatosEvaluaciones(Datos):
+    def __init__(self):
+        self.evaluaciones = {}
+        self.cargar_datos()
+
+    def cargar_datos(self):
         pass
 
-    def buscar_usuario(self):
-        pass
-
-    def inscribir_estudiante(self):
-        pass
-
-    def registrar_calificacion(self):
-        pass
-
-    def generar_reporte(self):
+    def guardar_datos(self):
         pass
