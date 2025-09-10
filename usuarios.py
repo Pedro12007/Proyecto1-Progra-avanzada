@@ -9,7 +9,7 @@ class Usuario(ABC):
 
     @abstractmethod
     def mostrar_info(self):
-        pass
+        return f"|Nombre: {self.nombre}|Correo: {self.correo}|Fecha de nacimiento: {self.fecha_nacimiento}|Rol: {self.rol}"
 
 class Estudiante(Usuario):
     def __init__(self, nombre, correo, fecha_nacimiento, rol, carnet, carrera):
@@ -34,8 +34,7 @@ class Instructor(Usuario):
         self.__codigo_empleado = codigo_empleado
 
     def mostrar_info(self):
-        pass
-
+        return super().mostrar_info()+f"|Codigo de empleado: {self.codigo_empleado}"
     @property
     def codigo_empleado(self):
         return self.__codigo_empleado
