@@ -36,5 +36,20 @@ class Instructor(Usuario):
     def mostrar_info(self):
         return super().mostrar_info()+f"|Codigo de empleado: {self.codigo_empleado}"
     @property
+    def acceder_sistema(self):
+        while True:
+            print("1. Consultar mis cursos asignados")
+            print("2. Ver estudiantes inscritos")
+            print("3. Crear evaluaciones")
+            print("4. Registrar calificaciones")
+            opcion= input("Ingrese una de las opciones: ")
+            match opcion:
+                case "1":
+                    pass
+                case "2":
+                    pass
+                case "3":
+                    pass
+
     def codigo_empleado(self):
         return self.__codigo_empleado
