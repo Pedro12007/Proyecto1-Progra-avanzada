@@ -9,7 +9,7 @@ class Usuario(ABC):
 
     @abstractmethod
     def mostrar_info(self):
-        pass
+        return f"|Nombre: {self.nombre}|Correo: {self.correo}|Fecha de nacimiento: {self.fecha_nacimiento}|Rol: {self.rol}|"
 
 class Estudiante(Usuario):
     def __init__(self, nombre, correo, fecha_nacimiento, rol, carnet, carrera):
@@ -18,7 +18,7 @@ class Estudiante(Usuario):
         self.__carrera = carrera
 
     def mostrar_info(self):
-        pass
+        return super().mostrar_info() + f"Carnet: {self.carnet}"
 
     def acceder_sistema(self):
         while True:
