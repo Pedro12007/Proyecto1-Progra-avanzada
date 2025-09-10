@@ -1,4 +1,4 @@
-class Cursos:
+class Curso:
     def __init__(self, id, nombre, instructor, lista):
         self.__id = id
         self.nombre = nombre

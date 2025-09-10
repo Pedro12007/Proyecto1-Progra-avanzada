@@ -56,7 +56,7 @@ class Instructor(Usuario):
 
     def mostrar_info(self):
         return super().mostrar_info()+f"|Codigo de empleado: {self.codigo_empleado}"
-    @property
+
     def acceder_sistema(self):
         while True:
             print("1. Consultar mis cursos asignados")
