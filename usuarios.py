@@ -18,6 +18,7 @@ class Estudiante(Usuario):
         self.__carrera = carrera
         self.cursos=[]
 
+
     def mostrar_info(self):
         return super().mostrar_info() + f"Carnet: {self.carnet}|Carrera: {self.carrera}"
 
