@@ -20,6 +20,9 @@ class Estudiante(Usuario):
     def mostrar_info(self):
         pass
 
+    def acceder_sistema(self):
+        pass
+
     @property
     def carnet(self):
         return self.__carnet
@@ -34,6 +37,9 @@ class Instructor(Usuario):
         self.__codigo_empleado = codigo_empleado
 
     def mostrar_info(self):
+        pass
+
+    def acceder_sistema(self):
         pass
 
     @property
