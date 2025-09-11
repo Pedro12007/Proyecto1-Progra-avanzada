@@ -25,6 +25,7 @@ class DatosCursos(Datos):
         self.cursos = {} # {id_curso: Curso}
         self.cargar_datos()
 
+
     def cargar_datos(self):
         try:
             with open("cursos.txt","r",encoding="utf-8") as archivo:
