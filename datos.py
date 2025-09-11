@@ -80,21 +80,21 @@ class DatosEvaluaciones(Datos):
                         self.evaluaciones[id_eval]= {
                             "Estatus": estatus,
                             "Descripcion": descripcion,
-                            "Punteo": punteo
+                            "Punteo": int(punteo)
 
                         }
-            print("Evaluaciones importadas desde 'Evaluaciones,txt'")
+            print("Evaluaciones importadas desde 'Evaluaciones.txt'")
         except FileNotFoundError:
             print("No existe el archivo 'Evaluaciones.txt', se creara uno al guardar. ")
 
     def guardar_datos(self):
-        with open("Evaluaciones.txt", "w", encoding="utf-8")as archivo:
-            for id, datos in self.evaluaciones.items():
-                archivo.write(f"{id}:{datos['Estatus']}:{datos['Descripcion']}:{datos*['Punteo']}\n")
+        with open("Evaluaciones.txt", "w", encoding="utf-8") as archivo:
+            for id_eval, datos in self.evaluaciones.items():
+                archivo.write(f"{id_eval}:{datos['Estatus']}:{datos['Descripcion']}:{datos['Punteo']}\n")
 
     def agregar_datos(self, id_eval, estatus, descripcion, punteo):
         if id_eval in self.evaluaciones:
             return "Id ya registrado"
         else:
-            self.evaluaciones[id_eval] = Evaluacion[id_eval, estatus, descripcion, punteo]
+            self.evaluaciones[id_eval] = Evaluacion(id_eval, estatus, descripcion, punteo)
             self.guardar_datos()
