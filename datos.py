@@ -46,10 +46,16 @@ class DatosCursos(Datos):
         except FileNotFoundError:
             print("No existe el archivo cursos.txt, se creará uno nuevo al guardar")
     def guardar_datos(self):
-        pass
-
-    def agregar_datos(self):
-        pass
+        with open("cursos.txt","w",encoding="utf-8") as archivo:
+            for id_curso, curso in self.cursos.items():
+                archivo.write(f"\n{curso.id_curso}:{curso.nombre}:{curso.instructor}")
+    def agregar_datos(self,id_curso,nombre,instructor):
+        if id_curso in self.cursos:
+            print("Id ya registrado")
+        else:
+            self.cursos[id_curso]= Curso(id_curso,nombre,instructor)
+            self.guardar_datos()
+            print("Curso agregado correctamente")
 
 class DatosEvaluaciones(Datos):
     def __init__(self):
