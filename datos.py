@@ -28,6 +28,7 @@ class DatosCursos(Datos):
     def cargar_datos(self):
         pass
 
+
     def guardar_datos(self):
         pass
 
@@ -38,7 +39,23 @@ class DatosEvaluaciones(Datos):
         self.cargar_datos()
 
     def cargar_datos(self):
-        pass
+        try:
+            with open("Evaluaciones.txt", "r", encoding="utf-8") as archivo:
+                for linea in archivo:
+                    linea = linea.strip()
+                    if linea:
+                        id_eval, estatus, descripcion, punteo = linea.split(":")
+                        self.evaluaciones[id_eval]= {
+                            "Estatus": estatus,
+                            "Descripcion": descripcion,
+                            "Punteo": punteo
+
+                        }
+            print("Evaluaciones importadas desde 'Evaluaciones,txt'")
+        except FileNotFoundError:
+            print("No existe el archivo 'Evaluaciones.txt', se creara uno al guardar. ")
 
     def guardar_datos(self):
-        pass
+        with open("Evaluaciones.txt", "w", encoding= "utf-8") as archivo:
+            for id, datos in self.evaluaciones.items():
+                print("p")
