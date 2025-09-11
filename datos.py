@@ -11,7 +11,7 @@ class Datos(ABC):
 
 class DatosUsuarios(Datos):
     def __init__(self):
-        self.usuarios = {}
+        self.usuarios = {} # {id_usuario: Estudiante/Instructor}
         self.cargar_datos()
 
     def cargar_datos(self):
@@ -22,7 +22,7 @@ class DatosUsuarios(Datos):
 
 class DatosCursos(Datos):
     def __init__(self):
-        self.cursos = {}
+        self.cursos = {} # {id_curso: Curso}
         self.cargar_datos()
 
     def cargar_datos(self):
@@ -31,20 +31,10 @@ class DatosCursos(Datos):
     def guardar_datos(self):
         pass
 
-class DatosInscripciones(Datos):
-    def __init__(self):
-        self.cursos = {}
-        self.cargar_datos()
-
-    def cargar_datos(self):
-        pass
-
-    def guardar_datos(self):
-        pass
 
 class DatosEvaluaciones(Datos):
     def __init__(self):
-        self.evaluaciones = {}
+        self.evaluaciones = {} # {id_eval: Evaluacion}
         self.cargar_datos()
 
     def cargar_datos(self):
