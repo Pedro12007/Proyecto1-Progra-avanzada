@@ -9,6 +9,10 @@ class Datos(ABC):
     def guardar_datos(self):
         pass
 
+    @abstractmethod
+    def agregar_datos(self):
+        pass
+
 class DatosUsuarios(Datos):
     def __init__(self):
         self.usuarios = {} # {id_usuario: Estudiante/Instructor}
@@ -20,6 +24,9 @@ class DatosUsuarios(Datos):
     def guardar_datos(self):
         pass
 
+    def agregar_datos(self):
+        pass
+
 class DatosCursos(Datos):
     def __init__(self):
         self.cursos = {} # {id_curso: Curso}
@@ -28,10 +35,11 @@ class DatosCursos(Datos):
     def cargar_datos(self):
         pass
 
-
     def guardar_datos(self):
         pass
 
+    def agregar_datos(self):
+        pass
 
 class DatosEvaluaciones(Datos):
     def __init__(self):
@@ -56,6 +64,7 @@ class DatosEvaluaciones(Datos):
             print("No existe el archivo 'Evaluaciones.txt', se creara uno al guardar. ")
 
     def guardar_datos(self):
-        with open("Evaluaciones.txt", "w", encoding= "utf-8") as archivo:
-            for id, datos in self.evaluaciones.items():
-                print("p")
+        pass
+
+    def agregar_datos(self):
+        pass
