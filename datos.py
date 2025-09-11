@@ -9,6 +9,10 @@ class Datos(ABC):
     def guardar_datos(self):
         pass
 
+    @abstractmethod
+    def agregar_datos(self):
+        pass
+
 class DatosUsuarios(Datos):
     def __init__(self):
         self.usuarios = {} # {id_usuario: Estudiante/Instructor}
@@ -18,6 +22,9 @@ class DatosUsuarios(Datos):
         pass
 
     def guardar_datos(self):
+        pass
+
+    def agregar_datos(self):
         pass
 
 class DatosCursos(Datos):
@@ -31,6 +38,8 @@ class DatosCursos(Datos):
     def guardar_datos(self):
         pass
 
+    def agregar_datos(self):
+        pass
 
 class DatosEvaluaciones(Datos):
     def __init__(self):
@@ -41,4 +50,7 @@ class DatosEvaluaciones(Datos):
         pass
 
     def guardar_datos(self):
+        pass
+
+    def agregar_datos(self):
         pass
