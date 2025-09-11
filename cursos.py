@@ -1,5 +1,5 @@
 class Curso:
-    def __init__(self, id, nombre, instructor, lista):
+    def __init__(self, id, nombre, instructor):
         self.__id = id
         self.nombre = nombre
         self.instructor = instructor
@@ -10,11 +10,11 @@ class Curso:
     def inscribir_estudiante(self):
         pass
     @property
-    def id(self):
+    def id_curso(self):
         return self.__id
-    @property
-    def lista(self):
-        return self.__lista
+    @id_curso.setter
+    def id_curso(self,id):
+        self.__id= id
 
 class Evaluacion:
     def __init__(self, id, estatus, descripcion, punteo):
