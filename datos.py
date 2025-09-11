@@ -33,23 +33,30 @@ class DatosCursos(Datos):
         self.cursos = {} # {id_curso: Curso}
         self.cargar_datos()
 
-
     def cargar_datos(self):
         try:
             with open("cursos.txt","r",encoding="utf-8") as archivo:
                 for linea in archivo:
                     linea = linea.strip()
                     if linea:
-                        id_curso,nombre,instructor= linea.split(":")
+                        id_curso,nombre,instructor,estudiantes, evaluaciones= linea.split(":")
                         curso= Curso(id_curso,nombre,instructor)
+                        estudiantes.split(',')
+                        for estudiante in estudiantes:
+                            curso.inscribir_estudiante(estudiante)
+                        evaluaciones.split(',')
+                        for evaluacion in evaluaciones:
+                            curso.agregar_evaluaciones(evaluacion)
                         self.cursos[curso.id_curso]=curso
             print("Cursos importados desde cursos.txt")
         except FileNotFoundError:
             print("No existe el archivo cursos.txt, se creará uno nuevo al guardar")
+
     def guardar_datos(self):
         with open("cursos.txt","w",encoding="utf-8") as archivo:
             for id_curso, curso in self.cursos.items():
                 archivo.write(f"\n{curso.id_curso}:{curso.nombre}:{curso.instructor}")
+
     def agregar_datos(self,id_curso,nombre,instructor):
         if id_curso in self.cursos:
             print("Id ya registrado")
