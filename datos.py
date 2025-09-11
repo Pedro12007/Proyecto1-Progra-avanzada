@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-
+from cursos import Evaluacion
 class Datos(ABC):
     @abstractmethod
     def cargar_datos(self):
@@ -64,7 +64,13 @@ class DatosEvaluaciones(Datos):
             print("No existe el archivo 'Evaluaciones.txt', se creara uno al guardar. ")
 
     def guardar_datos(self):
-        pass
+        with open("Evaluaciones.txt", "w", encoding="utf-8")as archivo:
+            for id, datos in self.evaluaciones.items():
+                archivo.write(f"{id}:{datos['Estatus']}:{datos['Descripcion']}:{datos*['Punteo']}\n")
 
-    def agregar_datos(self):
-        pass
+    def agregar_datos(self, id_eval, estatus, descripcion, punteo):
+        if id_eval in self.evaluaciones:
+            return "Id ya registrado"
+        else:
+            self.evaluaciones[id_eval] = Evaluacion[id_eval, estatus, descripcion, punteo]
+            self.guardar_datos()
