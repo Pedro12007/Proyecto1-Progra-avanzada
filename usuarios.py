@@ -40,7 +40,7 @@ class Estudiante(Usuario):
 
 
     @property
-    def carnet(self):
+    def id(self):
         return self.__carnet
 
     @property
@@ -59,7 +59,7 @@ class Instructor(Usuario):
         self.cursos_asignados = []
 
     def mostrar_info(self):
-        return super().mostrar_info()+f"|Codigo de empleado: {self.codigo_empleado}"
+        return super().mostrar_info()+f"|Codigo de empleado: {self.__codigo_empleado}"
 
     def acceder_sistema(self):
         print('ACCESO AL SISTEMA DE ESTUDIANTE\n')
@@ -78,7 +78,7 @@ class Instructor(Usuario):
                     pass
 
     @property
-    def codigo_empleado(self):
+    def id(self):
         return self.__codigo_empleado
 
     @property

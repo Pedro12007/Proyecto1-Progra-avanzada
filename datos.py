@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
 from cursos import Evaluacion
 from cursos import Curso
+from usuarios import Estudiante, Instructor
+
 class Datos(ABC):
     @abstractmethod
     def cargar_datos(self):
@@ -21,12 +23,39 @@ class DatosUsuarios(Datos):
 
     def cargar_datos(self):
         pass
+        try:
+            with open("usuarios.txt", "r", encoding="utf-8") as archivo:
+                for linea in archivo:
+                    linea = linea.strip()
+                    if linea:
+                        if linea.startswith('estudiante'):
+                            rol, nombre, correo, fecha_nacimiento, id, carrera, cursos = linea.split(":")
+                            if cursos:
+                                lista_cursos = cursos.split(',')
+                            self.usuarios[id] = Estudiante(nombre, correo, fecha_nacimiento, id, carrera)
+                            self.usuarios[id].cursos = lista_cursos
+                        elif linea.startswith('instructor'):
+                            rol, nombre, correo, fecha_nacimiento, id, cursos_asignados = linea.split(":")
+                            if cursos_asignados:
+                                lista_cursos = cursos_asignados.split(',')
+                            self.usuarios[id] = Estudiante(nombre, correo, fecha_nacimiento, id, carrera)
+                            self.usuarios[id].cursos_asignados = cursos_asignados
+            print("Usuarios importados desde usuarios.txt")
+        except FileNotFoundError:
+            print("No existe el archivo usuarios.txt, se creará uno nuevo al guardar.")
 
     def guardar_datos(self):
-        pass
+        with open('usuarios.txt', 'w', encoding='utf-8') as archivo:
+            for usuario in self.usuarios.values():
+                if usuario.rol == 'estudiante':
+                    archivo.write(f'{usuario.rol}:{usuario.nombre}:{usuario.correo}:{usuario.fecha_nacimiento}:{usuario.id}:{usuario.carrera}:{",".join(usuario.cursos)}\n')
+                elif usuario.rol == 'instructor':
+                    archivo.write(f'{usuario.rol}:{usuario.nombre}:{usuario.correo}:{usuario.fecha_nacimiento}:{usuario.id}:{",".join(usuario.cursos_asignados)}\n')
 
-    def agregar_datos(self):
-        pass
+
+    def agregar_datos(self, usuario):
+        self.usuarios[usuario.id] = usuario
+        self.guardar_datos()
 
 class DatosCursos(Datos):
     def __init__(self):
