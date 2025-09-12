@@ -32,14 +32,18 @@ class DatosUsuarios(Datos):
                             rol, nombre, correo, fecha_nacimiento, id, carrera, cursos = linea.split(":")
                             if cursos:
                                 lista_cursos = cursos.split(',')
+                            else:
+                                lista_cursos = []
                             self.usuarios[id] = Estudiante(nombre, correo, fecha_nacimiento, id, carrera)
                             self.usuarios[id].cursos = lista_cursos
                         elif linea.startswith('instructor'):
                             rol, nombre, correo, fecha_nacimiento, id, cursos_asignados = linea.split(":")
                             if cursos_asignados:
                                 lista_cursos = cursos_asignados.split(',')
-                            self.usuarios[id] = Estudiante(nombre, correo, fecha_nacimiento, id, carrera)
-                            self.usuarios[id].cursos_asignados = cursos_asignados
+                            else:
+                                lista_cursos = []
+                            self.usuarios[id] = Instructor(nombre, correo, fecha_nacimiento, id)
+                            self.usuarios[id].cursos_asignados = lista_cursos
             print("Usuarios importados desde usuarios.txt")
         except FileNotFoundError:
             print("No existe el archivo usuarios.txt, se creará uno nuevo al guardar.")
