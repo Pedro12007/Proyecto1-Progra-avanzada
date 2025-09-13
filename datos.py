@@ -60,6 +60,7 @@ class DatosUsuarios(Datos):
     def agregar_datos(self, usuario):
         self.usuarios[usuario.id] = usuario
         self.guardar_datos()
+        print('Usuario agregado correctamente.')
 
 class DatosCursos(Datos):
     def __init__(self):
@@ -90,7 +91,7 @@ class DatosCursos(Datos):
     def guardar_datos(self):
         with open("cursos.txt","w",encoding="utf-8") as archivo:
             for id_curso, curso in self.cursos.items():
-                archivo.write(f"{curso.id_curso}:{curso.nombre}:{curso.instructor}:{",".join(curso.estudiantes)}:{",".join(curso.evaluaciones)}")
+                archivo.write(f"{curso.id_curso}:{curso.nombre}:{curso.instructor}:{",".join(curso.estudiantes)}:{",".join(curso.evaluaciones)}\n")
 
     def agregar_datos(self,id_curso,nombre,instructor):
         if id_curso in self.cursos:
@@ -107,29 +108,25 @@ class DatosEvaluaciones(Datos):
 
     def cargar_datos(self):
         try:
-            with open("Evaluaciones.txt", "r", encoding="utf-8") as archivo:
+            with open("evaluaciones.txt", "r", encoding="utf-8") as archivo:
                 for linea in archivo:
                     linea = linea.strip()
                     if linea:
                         id_eval, estatus, descripcion, punteo = linea.split(":")
-                        self.evaluaciones[id_eval]= {
-                            "Estatus": estatus,
-                            "Descripcion": descripcion,
-                            "Punteo": int(punteo)
-
-                        }
-            print("Evaluaciones importadas desde 'Evaluaciones.txt'")
+                        self.evaluaciones[id_eval] = Evaluacion(id_eval, estatus, descripcion, punteo)
+            print("Evaluaciones importadas desde 'evaluaciones.txt'")
         except FileNotFoundError:
-            print("No existe el archivo 'Evaluaciones.txt', se creara uno al guardar. ")
+            print("No existe el archivo 'evaluaciones.txt', se creara uno al guardar. ")
 
     def guardar_datos(self):
-        with open("Evaluaciones.txt", "w", encoding="utf-8") as archivo:
-            for id_eval, datos in self.evaluaciones.items():
-                archivo.write(f"{id_eval}:{datos['Estatus']}:{datos['Descripcion']}:{datos['Punteo']}\n")
+        with open("evaluaciones.txt", "w", encoding="utf-8") as archivo:
+            for evaluacion in self.evaluaciones.values():
+                archivo.write(f"{evaluacion.id}:{evaluacion.estatus}:{evaluacion.descripcion}:{evaluacion.punteo}\n")
 
     def agregar_datos(self, id_eval, estatus, descripcion, punteo):
         if id_eval in self.evaluaciones:
-            return "Id ya registrado"
+            print("Id ya registrado")
         else:
             self.evaluaciones[id_eval] = Evaluacion(id_eval, estatus, descripcion, punteo)
             self.guardar_datos()
+            print('Evaluación agregada correctamente.')
