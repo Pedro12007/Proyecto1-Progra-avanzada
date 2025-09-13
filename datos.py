@@ -74,12 +74,14 @@ class DatosCursos(Datos):
                     if linea:
                         id_curso,nombre,instructor,estudiantes, evaluaciones= linea.split(":")
                         curso= Curso(id_curso,nombre,instructor)
-                        estudiantes.split(',')
-                        for estudiante in estudiantes:
-                            curso.inscribir_estudiante(estudiante)
-                        evaluaciones.split(',')
-                        for evaluacion in evaluaciones:
-                            curso.agregar_evaluaciones(evaluacion)
+                        if estudiantes:
+                            lista_estudiantes = estudiantes.split(',')
+                            for estudiante in lista_estudiantes:
+                                curso.inscribir_estudiante(estudiante)
+                        if evaluaciones:
+                            lista_evaluaciones = evaluaciones.split(',')
+                            for evaluacion in lista_evaluaciones:
+                                curso.agregar_evaluacion(evaluacion)
                         self.cursos[curso.id_curso]=curso
             print("Cursos importados desde cursos.txt")
         except FileNotFoundError:
@@ -88,7 +90,7 @@ class DatosCursos(Datos):
     def guardar_datos(self):
         with open("cursos.txt","w",encoding="utf-8") as archivo:
             for id_curso, curso in self.cursos.items():
-                archivo.write(f"\n{curso.id_curso}:{curso.nombre}:{curso.instructor}")
+                archivo.write(f"{curso.id_curso}:{curso.nombre}:{curso.instructor}:{",".join(curso.estudiantes)}:{",".join(curso.evaluaciones)}")
 
     def agregar_datos(self,id_curso,nombre,instructor):
         if id_curso in self.cursos:
