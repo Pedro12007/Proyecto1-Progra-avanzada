@@ -32,6 +32,8 @@ class Evaluacion:
         self.estatus = estatus
         self.descripcion = descripcion
         self.punteo = punteo
+        self.notas = {}
+
     def registrar_calificacion(self):
         pass
     @property

@@ -112,8 +112,12 @@ class DatosEvaluaciones(Datos):
                 for linea in archivo:
                     linea = linea.strip()
                     if linea:
-                        id_eval, estatus, descripcion, punteo = linea.split(":")
+                        id_eval, estatus, descripcion, punteo, notas = linea.split(":")
                         self.evaluaciones[id_eval] = Evaluacion(id_eval, estatus, descripcion, punteo)
+                        if notas:
+                            for par in notas.split(","):
+                                id_est, nota = par.split("=")
+                                self.evaluaciones[id_eval].notas[id_est] = int(nota)
             print("Evaluaciones importadas desde 'evaluaciones.txt'")
         except FileNotFoundError:
             print("No existe el archivo 'evaluaciones.txt', se creara uno al guardar. ")
@@ -121,7 +125,11 @@ class DatosEvaluaciones(Datos):
     def guardar_datos(self):
         with open("evaluaciones.txt", "w", encoding="utf-8") as archivo:
             for evaluacion in self.evaluaciones.values():
-                archivo.write(f"{evaluacion.id}:{evaluacion.estatus}:{evaluacion.descripcion}:{evaluacion.punteo}\n")
+                notas = []
+                for est, nota in evaluacion.notas.items():
+                    notas.append(f"{est}={nota}")
+                notas_str = ",".join(notas)
+                archivo.write(f"{evaluacion.id}:{evaluacion.estatus}:{evaluacion.descripcion}:{evaluacion.punteo}:{notas_str}\n")
 
     def agregar_datos(self, id_eval, estatus, descripcion, punteo):
         if id_eval in self.evaluaciones:
