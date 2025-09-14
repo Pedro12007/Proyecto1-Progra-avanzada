@@ -6,11 +6,11 @@ class MenuPrincipal:
         while True:
             print("-" * 10 + "REGISTRO ESTUDIANTES" + "-" * 10 + "\n"
                  "1. Registrar usuario \n"
-                 "2. Ingresar Estudiante \n"
-                 "3. Ingresar Instructor \n"
+                 "2. Ingresar como Estudiante \n"
+                 "3. Ingresar como Instructor \n"
                  "4. Administrar cursos \n"
                  "5. Salir")
-            option = int(input("Ingrese una opcion: "))
+            option = int(input("Ingrese una opción: "))
             match option:
                 case 1:
                     pass
@@ -23,6 +23,8 @@ class MenuPrincipal:
                 case 5:
                     print('Saliendo del programa...')
                     break
+                case _:
+                    print('Opción inválida. Intente nuevamente.\n')
 
 menu = MenuPrincipal()
 menu.ejecutar_menu()
