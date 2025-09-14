@@ -24,7 +24,7 @@ class DatosUsuarios(Datos):
     def cargar_datos(self):
         pass
         try:
-            with open("usuarios.txt", "r", encoding="utf-8") as archivo:
+            with open("data/usuarios.txt", "r", encoding="utf-8") as archivo:
                 for linea in archivo:
                     linea = linea.strip()
                     if linea:
@@ -49,7 +49,7 @@ class DatosUsuarios(Datos):
             print("No existe el archivo usuarios.txt, se creará uno nuevo al guardar.")
 
     def guardar_datos(self):
-        with open('usuarios.txt', 'w', encoding='utf-8') as archivo:
+        with open('data/usuarios.txt', 'w', encoding='utf-8') as archivo:
             for usuario in self.usuarios.values():
                 if usuario.rol == 'estudiante':
                     archivo.write(f'{usuario.rol}:{usuario.nombre}:{usuario.correo}:{usuario.fecha_nacimiento}:{usuario.id}:{usuario.carrera}:{",".join(usuario.cursos)}\n')
@@ -58,9 +58,12 @@ class DatosUsuarios(Datos):
 
 
     def agregar_datos(self, usuario):
-        self.usuarios[usuario.id] = usuario
-        self.guardar_datos()
-        print('Usuario agregado correctamente.')
+        if usuario.id not in self.usuarios:
+            self.usuarios[usuario.id] = usuario
+            self.guardar_datos()
+            print('Usuario agregado correctamente.')
+        else:
+            print('Id ya registrado')
 
 class DatosCursos(Datos):
     def __init__(self):
@@ -69,7 +72,7 @@ class DatosCursos(Datos):
 
     def cargar_datos(self):
         try:
-            with open("cursos.txt","r",encoding="utf-8") as archivo:
+            with open("data/cursos.txt","r",encoding="utf-8") as archivo:
                 for linea in archivo:
                     linea = linea.strip()
                     if linea:
@@ -89,7 +92,7 @@ class DatosCursos(Datos):
             print("No existe el archivo cursos.txt, se creará uno nuevo al guardar")
 
     def guardar_datos(self):
-        with open("cursos.txt","w",encoding="utf-8") as archivo:
+        with open("data/cursos.txt","w",encoding="utf-8") as archivo:
             for id_curso, curso in self.cursos.items():
                 archivo.write(f"{curso.id_curso}:{curso.nombre}:{curso.instructor}:{",".join(curso.estudiantes)}:{",".join(curso.evaluaciones)}\n")
 
@@ -108,7 +111,7 @@ class DatosEvaluaciones(Datos):
 
     def cargar_datos(self):
         try:
-            with open("evaluaciones.txt", "r", encoding="utf-8") as archivo:
+            with open("data/evaluaciones.txt", "r", encoding="utf-8") as archivo:
                 for linea in archivo:
                     linea = linea.strip()
                     if linea:
@@ -123,7 +126,7 @@ class DatosEvaluaciones(Datos):
             print("No existe el archivo 'evaluaciones.txt', se creara uno al guardar. ")
 
     def guardar_datos(self):
-        with open("evaluaciones.txt", "w", encoding="utf-8") as archivo:
+        with open("data/evaluaciones.txt", "w", encoding="utf-8") as archivo:
             for evaluacion in self.evaluaciones.values():
                 notas = []
                 for est, nota in evaluacion.notas.items():
