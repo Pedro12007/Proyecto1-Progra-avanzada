@@ -56,9 +56,10 @@ class MenuPrincipal:
                                 else:
                                     print("Curso o instructor no encontrado")
                             case "3":
-                                pass
+                                    cursos.mostrar_datos()
                             case "4":
-                                pass
+                                print("\nReporte de estudiantes con promedio bajo")
+
                             case "5":
                                 break
                 case '4':
