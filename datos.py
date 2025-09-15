@@ -118,7 +118,12 @@ class DatosCursos(Datos):
             print("Curso agregado correctamente")
 
     def mostrar_datos(self):
-        pass
+        if self.cursos:
+            print("\nLista de cursos")
+            for i,curso in enumerate(self.cursos.values(),start=1):
+                print(f"{i}. {curso.mostar_info()}")
+        else:
+            print("No hay cursos registrados")
 
 class DatosEvaluaciones(Datos):
     def __init__(self):

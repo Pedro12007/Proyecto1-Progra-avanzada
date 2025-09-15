@@ -25,6 +25,8 @@ class Curso:
             self.estudiantes.append(evaluacion_id)
         else:
             print('Estudiante ya registrado.')
+    def mostar_info(self):
+        return f"|Id: {self.id_curso}|Nombre: {self.nombre}|Instructor: {self.instructor}|"
 
 class Evaluacion:
     def __init__(self, id, estatus, descripcion, punteo):
