@@ -8,7 +8,7 @@ class Usuario(ABC):
 
     @abstractmethod
     def mostrar_info(self):
-        return f"|Nombre: {self.nombre}|Correo: {self.correo}|Fecha de nacimiento: {self.fecha_nacimiento}|Rol: {self.rol}|"
+        return f"|Nombre: {self.nombre}|Correo: {self.correo}|Año de nacimiento: {self.fecha_nacimiento}|"
 
 class Estudiante(Usuario):
     def __init__(self, nombre, correo, fecha_nacimiento, carnet, carrera):
@@ -19,14 +19,14 @@ class Estudiante(Usuario):
         self.cursos=[]
 
     def mostrar_info(self):
-        return super().mostrar_info() + f"Carnet: {self.carnet}|Carrera: {self.carrera}"
+        return 'ESTUDIANTE: ' + super().mostrar_info() + f"Carnet: {self.__carnet}|Carrera: {self.carrera}|"
 
     def acceder_sistema(self):
         print('ACCESO AL SISTEMA DE ESTUDIANTE\n')
         while True:
             print("1. Inscribirse en un curso.\n"
                   "2. Consultar mis cursos.\n"
-                  "3. ver mis evaluaciones.\n"
+                  "3. Ver mis evaluaciones.\n"
                   "4. Consultar mis calificaciones.")
             option = int(input("Ingrese una opción: "))
             match option:
@@ -59,10 +59,10 @@ class Instructor(Usuario):
         self.cursos_asignados = []
 
     def mostrar_info(self):
-        return super().mostrar_info()+f"|Codigo de empleado: {self.__codigo_empleado}"
+        return 'INSTRUCTOR: ' +  super().mostrar_info()+f"|Codigo de empleado: {self.__codigo_empleado}|"
 
     def acceder_sistema(self):
-        print('ACCESO AL SISTEMA DE ESTUDIANTE\n')
+        print('ACCESO AL SISTEMA DE INSTRUCTOR\n')
         while True:
             print("1. Consultar mis cursos asignados")
             print("2. Ver estudiantes inscritos")
@@ -76,6 +76,9 @@ class Instructor(Usuario):
                     pass
                 case "3":
                     pass
+                case '4':
+                    pass
+
 
     @property
     def id(self):

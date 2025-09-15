@@ -1,3 +1,9 @@
+from datos import DatosUsuarios, DatosCursos, DatosEvaluaciones
+
+usuarios = DatosUsuarios()
+cursos = DatosCursos()
+evaluaciones = DatosEvaluaciones()
+
 class MenuPrincipal:
     def __init__(self):
         pass
@@ -6,21 +12,24 @@ class MenuPrincipal:
         while True:
             print("-" * 10 + "REGISTRO ESTUDIANTES" + "-" * 10 + "\n"
                  "1. Registrar usuario \n"
-                 "2. Ingresar como Estudiante \n"
-                 "3. Ingresar como Instructor \n"
-                 "4. Administrar cursos \n"
-                 "5. Salir")
-            option = int(input("Ingrese una opción: "))
+                 "2. Ingresar al sistema \n"
+                 "3. Administrar cursos \n"
+                 "4. Salir")
+            option = input("Ingrese una opción: ")
             match option:
-                case 1:
+                case '1':
                     pass
-                case 2:
+                case '2':
+                    mostrar_datos = usuarios.mostrar_datos()
+                    if mostrar_datos:
+                        id_usuario = input('Ingrese el id del usuario (carnet o código de empleado): ')
+                        if id_usuario in usuarios.usuarios:
+                            usuarios.usuarios[id_usuario].acceder_sistema()
+                        else:
+                            print('El id ingresado no existe.')
+                case '3':
                     pass
-                case 3:
-                    pass
-                case 4:
-                    pass
-                case 5:
+                case '4':
                     print('Saliendo del programa...')
                     break
                 case _:
