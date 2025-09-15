@@ -34,6 +34,7 @@ class MenuPrincipal:
                         print("2. Asignar curso a instructor")
                         print("3. Consultar cursos")
                         print("4. Generar reportes")
+                        print("5. Volver a menu principal")
                         opcion= input("Ingrese una de las opciones: ")
                         match opcion:
                             case "1":
@@ -54,6 +55,12 @@ class MenuPrincipal:
                                     print(f"Curso {id_curso} asignado a instructor {codigo_instructor}")
                                 else:
                                     print("Curso o instructor no encontrado")
+                            case "3":
+                                pass
+                            case "4":
+                                pass
+                            case "5":
+                                break
                 case '4':
                     print('Saliendo del programa...')
                     break
