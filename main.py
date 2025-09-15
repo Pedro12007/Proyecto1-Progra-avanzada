@@ -28,7 +28,19 @@ class MenuPrincipal:
                         else:
                             print('El id ingresado no existe.')
                 case '3':
-                    pass
+                    while True:
+                        print("ADMINISTRAR CURSOS")
+                        print("1. Crear curso")
+                        print("2. Asignar curso a instructor")
+                        print("3. Consultar cursos")
+                        print("4. Generar reportes")
+                        opcion= input("Ingrese una de las opciones: ")
+                        match opcion:
+                            case "1":
+                                id= input("Ingrese código del curso: ")
+                                nombre= input("Ingrese el nombre del curso: ")
+                                instructor= input("Ingrese el codigo del instructor: ")
+                                cursos.agregar_datos(id,nombre,instructor)
                 case '4':
                     print('Saliendo del programa...')
                     break
