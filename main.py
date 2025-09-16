@@ -1,4 +1,5 @@
-from datos import DatosUsuarios, DatosCursos, DatosEvaluaciones, Estudiante, Instructor
+from datos import DatosUsuarios, DatosCursos, DatosEvaluaciones
+from usuarios import Estudiante, Instructor
 
 usuarios = DatosUsuarios()
 cursos = DatosCursos()
