@@ -21,7 +21,7 @@ class Estudiante(Usuario):
     def mostrar_info(self):
         return 'ESTUDIANTE: ' + super().mostrar_info() + f"Carnet: {self.__carnet}|Carrera: {self.carrera}|"
 
-    def acceder_sistema(self):
+    def acceder_sistema(self, cursos, evaluaciones):
         print('ACCESO AL SISTEMA DE ESTUDIANTE\n')
         while True:
             print("1. Inscribirse en un curso.\n"
@@ -32,7 +32,15 @@ class Estudiante(Usuario):
             option = input("Ingrese una opción: ")
             match option:
                 case '1':
-                    pass
+                    cursos.mostrar_datos()
+                    curso_id = input('Ingrese el id del curso al que desea inscribirse: ')
+                    if curso_id in cursos.cursos and curso_id not in self.cursos:
+                        self.cursos.append(curso_id)
+                        cursos.cursos[curso_id].inscribir_estudiante(self.id)
+                        cursos.guardar_datos()
+                        print(f'Te has inscrito al curso con id: {curso_id}')
+                    else:
+                        print('Curso inexistente o ya inscrito previamente.')
 
                 case '2':
                     pass
@@ -69,7 +77,7 @@ class Instructor(Usuario):
     def mostrar_info(self):
         return 'INSTRUCTOR: ' +  super().mostrar_info()+f"|Codigo de empleado: {self.__codigo_empleado}|"
 
-    def acceder_sistema(self):
+    def acceder_sistema(self, cursos, evaluaciones):
         print('ACCESO AL SISTEMA DE INSTRUCTOR\n')
         while True:
             print("1. Consultar mis cursos asignados")
