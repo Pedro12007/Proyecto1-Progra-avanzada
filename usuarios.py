@@ -117,7 +117,7 @@ class Instructor(Usuario):
     def mostrar_info(self):
         return 'INSTRUCTOR: ' +  super().mostrar_info()+f"|Codigo de empleado: {self.__codigo_empleado}|"
 
-    def acceder_sistema(self, cursos, evaluaciones):
+    def acceder_sistema(self, cursos, evaluaciones, usuarios):
         print('ACCESO AL SISTEMA DE INSTRUCTOR\n')
         while True:
             print("1. Consultar mis cursos asignados")
@@ -128,10 +128,30 @@ class Instructor(Usuario):
             opcion= input("Ingrese una de las opciones: ")
             match opcion:
                 case "1":
-                    pass
+                    if self.cursos_asignados:
+                        print('--- Mis Cursos Asignados ---')
+                        for i, id_curso in enumerate(self.cursos_asignados, 1):
+                            print(f'{i}. {cursos.cursos[id_curso].mostrar_info()}')
+                        print('----------------------------')
+                    else:
+                        print('No tienes cursos asignados.')
 
                 case "2":
-                    pass
+                    if not self.cursos_asignados:
+                        print('No tienes cursos asignados para poder ver estudiantes.')
+                        continue
+
+                    print('--- Selecciona un curso para ver los estudiantes inscritos ---')
+                    for i, id_curso in enumerate(self.cursos_asignados, 1):
+                        print(f'{i}. {cursos.cursos[id_curso].nombre}')
+
+                    try:
+                        seleccion = int(input('Elige el número del curso: '))
+                        curso_seleccionado_id = self.cursos_asignados[seleccion - 1]
+                        curso_obj = cursos.cursos[curso_seleccionado_id]
+                        curso_obj.ver_estudiantes_inscritos(usuarios)
+                    except (ValueError, IndexError):
+                        print('Selección no válida. Por favor, introduce un número de la lista.')
 
                 case "3":
                     pass
