@@ -78,6 +78,22 @@ class MenuPrincipal:
                                     cursos.mostrar_datos()
                             case "4":
                                 print("\nReporte de estudiantes con promedio bajo")
+                                for curso in cursos.cursos.values():
+                                    notas_por_estudiante={} #{carnet: [notas]}
+                                    for id_evaluacion in curso.evaluaciones:
+                                        if id_evaluacion in evaluaciones.evaluaciones:
+                                            evaluacion= evaluaciones.evaluaciones[id_evaluacion]
+                                            for estudiante, nota in evaluacion.notas.items():
+                                                if estudiante not in notas_por_estudiante:
+                                                    notas_por_estudiante[estudiante]= []
+                                                notas_por_estudiante[estudiante].append(nota)
+                                    for estudiante, notas in notas_por_estudiante.items():
+                                        if notas:
+                                            promedio= sum(notas)/len(notas)
+                                            if promedio < 60:
+                                                if estudiante in usuarios.usuarios:
+                                                    nombre_estudiante= usuarios.usuarios[estudiante].nombre
+                                                print(f"Curso: {curso.nombre}|Estudiante: {nombre_estudiante} ({estudiante}|Promedio: {promedio:.2f}|")
 
                             case "5":
                                 break
