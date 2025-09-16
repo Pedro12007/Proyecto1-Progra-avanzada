@@ -37,6 +37,14 @@ class Estudiante(Usuario):
                     fecha_nacimiento = int(input("Ingrese año de nacimiento: "))
                     carnet = input("Ingrese carnet: ")
                     carrera = input("Ingrese carrera:  ")
+                case 2:
+                    pass
+                case 3:
+                    pass
+                case 4:
+                    pass
+                case _:
+                    print("Ingrese una opcion valida")
 
 
     @property

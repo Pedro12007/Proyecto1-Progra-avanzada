@@ -1,4 +1,4 @@
-from datos import DatosUsuarios, DatosCursos, DatosEvaluaciones
+from datos import DatosUsuarios, DatosCursos, DatosEvaluaciones, Estudiante, Instructor
 
 usuarios = DatosUsuarios()
 cursos = DatosCursos()
@@ -18,7 +18,27 @@ class MenuPrincipal:
             option = input("Ingrese una opción: ")
             match option:
                 case '1':
-                    pass
+                    print("-"*10 +"REGISTRO DE USUARIO"+ "-"*10)
+                    print("1. Estudiante\n"
+                          "2. Instructor")
+                    option = input("Ingrese una opcion: ")
+                    if option == '1':
+                        print("-"*10+"REGISTRAR ESTUDIANTES" +"-"*10)
+                        nombre = input("Ingrese nombre: ")
+                        correo = input("Ingrese correo: ")
+                        nacimiento = int(input("Ingrese el año de nacimiento: "))
+                        carnet = input("Ingrese carnet: ")
+                        carrera = input("Ingrese carrera: ")
+                        nuevo_estudiante = Estudiante(nombre, correo, nacimiento, carnet, carrera)
+                        usuarios.agregar_datos(nuevo_estudiante)
+                    elif option == '2':
+                        print("-"*10 +"REGISTRAR INSTRUCTORES"+ "-"*10)
+                        nombre = input("Ingrese nombre: ")
+                        correo = input("Ingrese correo: ")
+                        nacimiento = int(input("Ingrese el año de nacimiento: "))
+                        code_empleado = input("Ingrese el codigo de empleado del instructor: ")
+                        nuevo_instructor = Instructor(nombre, correo, nacimiento, code_empleado)
+                        usuarios.agregar_datos(nuevo_instructor)
                 case '2':
                     mostrar_datos = usuarios.mostrar_datos()
                     if mostrar_datos:
