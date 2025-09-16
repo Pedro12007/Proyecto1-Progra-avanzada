@@ -27,24 +27,24 @@ class Estudiante(Usuario):
             print("1. Inscribirse en un curso.\n"
                   "2. Consultar mis cursos.\n"
                   "3. Ver mis evaluaciones.\n"
-                  "4. Consultar mis calificaciones.")
-            option = int(input("Ingrese una opción: "))
+                  "4. Consultar mis calificaciones.\n"
+                  "5.Salir")
+            option = input("Ingrese una opción: ")
             match option:
-                case 1:
-                    print("-"*10 + "INSCRIBIRSE EN UN CURSO. " + "-"*10)
-                    nombre = input("Ingrese nombre: ")
-                    correo = input("Ingrese un correo: ")
-                    fecha_nacimiento = int(input("Ingrese año de nacimiento: "))
-                    carnet = input("Ingrese carnet: ")
-                    carrera = input("Ingrese carrera:  ")
-                case 2:
+                case '1':
                     pass
-                case 3:
+
+                case '2':
                     pass
-                case 4:
+
+                case '3':
                     pass
-                case _:
-                    print("Ingrese una opcion valida")
+
+                case '4':
+                    pass
+
+                case '5':
+                    break
 
 
     @property
@@ -76,6 +76,7 @@ class Instructor(Usuario):
             print("2. Ver estudiantes inscritos")
             print("3. Crear evaluaciones")
             print("4. Registrar calificaciones")
+            print('5. Salir')
             opcion= input("Ingrese una de las opciones: ")
             match opcion:
                 case "1":
@@ -85,6 +86,9 @@ class Instructor(Usuario):
                 case "3":
                     pass
                 case '4':
+                    pass
+
+                case '5':
                     pass
 
 
