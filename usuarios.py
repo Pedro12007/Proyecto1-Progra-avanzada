@@ -28,7 +28,7 @@ class Estudiante(Usuario):
                   "2. Consultar mis cursos.\n"
                   "3. Ver mis evaluaciones.\n"
                   "4. Consultar mis calificaciones.\n"
-                  "5.Salir")
+                  "5. Volver a menu principal")
             option = input("Ingrese una opción: ")
             match option:
                 case '1':
@@ -124,20 +124,23 @@ class Instructor(Usuario):
             print("2. Ver estudiantes inscritos")
             print("3. Crear evaluaciones")
             print("4. Registrar calificaciones")
-            print('5. Salir')
+            print('5. Volver a menu principal')
             opcion= input("Ingrese una de las opciones: ")
             match opcion:
                 case "1":
                     pass
+
                 case "2":
                     pass
+
                 case "3":
                     pass
+
                 case '4':
                     pass
 
                 case '5':
-                    pass
+                    break
 
 
     @property
