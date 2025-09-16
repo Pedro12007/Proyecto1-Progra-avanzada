@@ -44,7 +44,7 @@ class MenuPrincipal:
                     if mostrar_datos:
                         id_usuario = input('Ingrese el id del usuario (carnet o código de empleado): ')
                         if id_usuario in usuarios.usuarios:
-                            usuarios.usuarios[id_usuario].acceder_sistema()
+                            usuarios.usuarios[id_usuario].acceder_sistema(cursos, evaluaciones)
                         else:
                             print('El id ingresado no existe.')
                 case '3':

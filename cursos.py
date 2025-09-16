@@ -31,13 +31,17 @@ class Curso:
 class Evaluacion:
     def __init__(self, id, estatus, descripcion, punteo):
         self.__id = id
-        self.estatus = estatus
+        self.estatus = estatus # abierta/cerrada
         self.descripcion = descripcion
         self.punteo = punteo
         self.notas = {}
 
     def registrar_calificacion(self):
         pass
+
+    def mostrar_info(self):
+        return f'|Id: {self.id}|Descripción: {self.descripcion}|Estatus: {self.estatus}|Punteo: {self.punteo}|'
+
     @property
     def id(self):
         return self.__id
