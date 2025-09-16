@@ -43,10 +43,31 @@ class Estudiante(Usuario):
                         print('Curso inexistente o ya inscrito previamente.')
 
                 case '2':
-                    pass
+                    if self.cursos:
+                        print('Cursos en los que estás inscrito:')
+                        for i, id_curso in enumerate(self.cursos, 1):
+                            print(f'{i}. {cursos.cursos[id_curso].mostrar_info()}')
+                    else:
+                        print('No estás inscrito a ningún curso.')
 
                 case '3':
-                    pass
+                    if self.cursos:
+                        evaluaciones_est = {}
+                        for id_curso in self.cursos:
+                            if cursos.cursos[id_curso].evaluaciones:
+                                evaluaciones_est[id_curso] = []
+                                for id_evaluacion in cursos.cursos[id_curso].evaluaciones:
+                                    evaluaciones_est[id_curso].append(id_evaluacion)
+                        if evaluaciones_est:
+                            for curso, evaluaciones_list in evaluaciones_est.items():
+                                print(f'CURSO: {cursos.cursos[curso].nombre}')
+                                for evaluacion in evaluaciones_list:
+                                    print(f'EVALUACIÓN: {evaluaciones.evaluaciones[evaluacion].mostrar_info()}\n')
+                                print()
+                        else:
+                            print('No tienes ninguna evaluación asignada.')
+                    else:
+                        print('No estás inscrito a ningún curso.')
 
                 case '4':
                     pass
