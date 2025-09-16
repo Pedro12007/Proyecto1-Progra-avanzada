@@ -21,7 +21,7 @@ class Estudiante(Usuario):
     def mostrar_info(self):
         return 'ESTUDIANTE: ' + super().mostrar_info() + f"Carnet: {self.__carnet}|Carrera: {self.carrera}|"
 
-    def acceder_sistema(self, cursos, evaluaciones):
+    def acceder_sistema(self, cursos, evaluaciones, usuarios):
         print('ACCESO AL SISTEMA DE ESTUDIANTE\n')
         while True:
             print("1. Inscribirse en un curso.\n"
@@ -52,7 +52,7 @@ class Estudiante(Usuario):
 
                 case '3':
                     if self.cursos:
-                        evaluaciones_est = {}
+                        evaluaciones_est = {} # evaluaciones_est = {id_curso: [id_evaluacion1, id_evaluacion2]}
                         for id_curso in self.cursos:
                             if cursos.cursos[id_curso].evaluaciones:
                                 evaluaciones_est[id_curso] = []
@@ -71,7 +71,7 @@ class Estudiante(Usuario):
 
                 case '4':
                     if self.cursos:
-                        calificaciones = {}
+                        calificaciones = {} # calificaciones = {id_curso: {id_evaluacion: nota}}
                         for id_curso in self.cursos:
                             if cursos.cursos[id_curso].evaluaciones:
                                 calificaciones[id_curso] = {}
