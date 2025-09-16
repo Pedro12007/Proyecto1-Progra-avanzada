@@ -25,6 +25,17 @@ class Curso:
             self.estudiantes.append(evaluacion_id)
         else:
             print('Estudiante ya registrado.')
+
+    def ver_estudiantes_inscritos(self, usuarios):
+        if self.estudiantes:
+            print(f"Estudiantes inscritos en el curso '{self.nombre}':")
+            for i, estudiante_id in enumerate(self.estudiantes, 1):
+                if estudiante_id in usuarios.usuarios:
+                    estudiante = usuarios.usuarios[estudiante_id]
+                    print(f"{i}. {estudiante.mostrar_info()}")
+        else:
+            print("No hay estudiantes inscritos en este curso.")
+
     def mostar_info(self):
         return f"|Id: {self.id_curso}|Nombre: {self.nombre}|Instructor: {self.instructor}|"
 
