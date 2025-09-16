@@ -70,7 +70,26 @@ class Estudiante(Usuario):
                         print('No estás inscrito a ningún curso.')
 
                 case '4':
-                    pass
+                    if self.cursos:
+                        calificaciones = {}
+                        for id_curso in self.cursos:
+                            if cursos.cursos[id_curso].evaluaciones:
+                                calificaciones[id_curso] = {}
+                                for id_evaluacion in cursos.cursos[id_curso].evaluaciones:
+                                    if self.id in evaluaciones.evaluaciones[id_evaluacion].notas:
+                                        calificaciones[id_curso][id_evaluacion] = evaluaciones.evaluaciones[id_evaluacion].notas[self.id]
+                                    else:
+                                        calificaciones[id_curso][id_evaluacion] = 'Sin nota asignada.'
+                        if calificaciones:
+                            for curso, evaluaciones_dict in calificaciones.items():
+                                print(f'CURSO: {cursos.cursos[curso].nombre}')
+                                for evaluacion, nota in evaluaciones_dict.items():
+                                    print(f'EVALUACIÓN {evaluaciones.evaluaciones[evaluacion].id} - Nota: {nota}\n')
+                                print()
+                        else:
+                            print('No tienes ninguna evaluación asignada.')
+                    else:
+                        print('No estás inscrito a ningún curso.')
 
                 case '5':
                     break
