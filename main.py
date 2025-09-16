@@ -1,4 +1,6 @@
-from datos import DatosUsuarios, DatosCursos, DatosEvaluaciones, Estudiante, Instructor
+from datos import DatosUsuarios, DatosCursos, DatosEvaluaciones
+from usuarios import Estudiante, Instructor
+
 usuarios = DatosUsuarios()
 cursos = DatosCursos()
 evaluaciones = DatosEvaluaciones()
@@ -43,7 +45,7 @@ class MenuPrincipal:
                     if mostrar_datos:
                         id_usuario = input('Ingrese el id del usuario (carnet o código de empleado): ')
                         if id_usuario in usuarios.usuarios:
-                            usuarios.usuarios[id_usuario].acceder_sistema(cursos, evaluaciones)
+                            usuarios.usuarios[id_usuario].acceder_sistema(cursos, evaluaciones, usuarios)
                         else:
                             print('El id ingresado no existe.')
                 case '3':
