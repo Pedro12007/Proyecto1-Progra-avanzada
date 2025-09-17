@@ -58,7 +58,7 @@ class Estudiante(Usuario): #PRIMERA CLASE HIJA
                                 evaluaciones_est[id_curso] = []
                                 for id_evaluacion in cursos.cursos[id_curso].evaluaciones:
                                     evaluaciones_est[id_curso].append(id_evaluacion)
-                        if evaluaciones_est:x|
+                        if evaluaciones_est:
                             for curso, evaluaciones_list in evaluaciones_est.items():
                                 print(f'CURSO: {cursos.cursos[curso].nombre}')
                                 for evaluacion in evaluaciones_list:
