@@ -181,17 +181,61 @@ class Instructor(Usuario):
                                     print('Punteo no válido. Debe ser un número entero.')
 
                             evaluaciones.agregar_datos(id_evaluacion, descripcion, punteo)
-                            cursos.cursos[id_curso].evaluaciones.append(id_evaluacion)
+                            cursos.cursos[id_curso].agregar_evaluacion(id_evaluacion)
                             cursos.guardar_datos()
 
                         else:
                             print('El curso ingresado no existe.')
-
                     else:
                         print('No tienes cursos asignados.')
 
                 case '4':
-                    pass
+                    if self.cursos_asignados:
+                        print('--- Mis Cursos Asignados ---')
+                        self.ver_cursos(cursos)
+                        print('----------------------------')
+
+                        id_curso = input('Ingrese el id del curso: ')
+                        if id_curso in self.cursos_asignados:
+                            if cursos.cursos[id_curso].estudiantes:
+                                if cursos.cursos[id_curso].evaluaciones:
+                                    cursos.cursos[id_curso].ver_evaluaciones(evaluaciones)
+                                    while True:
+                                        id_evaluacion = input('Ingrese el id de la evaluación: ')
+                                        if id_evaluacion in cursos.cursos[id_curso].evaluaciones:
+                                            break
+                                        else:
+                                            print('Id de evaluación inválido. Intente nuevamente.')
+
+                                    cursos.cursos[id_curso].ver_estudiantes_inscritos(usuarios)
+                                    while True:
+                                        id_est = input('Ingrese el id del estudiante deseado: ')
+                                        if id_est in cursos.cursos[id_curso].estudiantes:
+                                            break
+                                        else:
+                                            print('Id de estudiante inválido. Intente nuevamente.')
+
+                                    while True:
+                                        try:
+                                            punteo_max = evaluaciones.evaluaciones[id_evaluacion].punteo
+                                            nota = int(input(f'Ingrese la nota del estudiante (0-{punteo_max}): '))
+                                            if 0 <= nota <= punteo_max:
+                                                evaluaciones.evaluaciones[id_evaluacion].registrar_calificacion(id_est, nota)
+                                                break
+                                            else:
+                                                print('La nota debe estar en el rango establecido.')
+                                                continue
+                                        except ValueError:
+                                            print('Nota inválida. Debe ser un número.')
+                                    evaluaciones.guardar_datos()
+                                else:
+                                    print('El curso no tiene evaluaciones.')
+                            else:
+                                print('El curso no tiene estudiantes.')
+                        else:
+                            print('El curso ingresado no existe.')
+                    else:
+                        print('No tienes cursos asignados.')
 
                 case '5':
                     break

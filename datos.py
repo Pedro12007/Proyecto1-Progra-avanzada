@@ -159,7 +159,7 @@ class DatosEvaluaciones(Datos):
         if id_eval in self.evaluaciones:
             print("Id ya registrado")
         else:
-            self.evaluaciones[id_eval] = Evaluacion(id_eval, descripcion, punteo)
+            self.evaluaciones[id_eval] = Evaluacion(id_eval, descripcion, int(punteo))
             self.guardar_datos()
             print('Evaluación agregada correctamente.')
 
