@@ -136,8 +136,8 @@ class DatosEvaluaciones(Datos):
                 for linea in archivo:
                     linea = linea.strip()
                     if linea:
-                        id_eval, estatus, descripcion, punteo, notas = linea.split(":")
-                        self.evaluaciones[id_eval] = Evaluacion(id_eval, estatus, descripcion, int(punteo))
+                        id_eval, descripcion, punteo, notas = linea.split(":")
+                        self.evaluaciones[id_eval] = Evaluacion(id_eval, descripcion, int(punteo))
                         if notas:
                             for par in notas.split(","):
                                 id_est, nota = par.split("=")
@@ -153,13 +153,13 @@ class DatosEvaluaciones(Datos):
                 for est, nota in evaluacion.notas.items():
                     notas.append(f"{est}={nota}")
                 notas_str = ",".join(notas)
-                archivo.write(f"{evaluacion.id}:{evaluacion.estatus}:{evaluacion.descripcion}:{evaluacion.punteo}:{notas_str}\n")
+                archivo.write(f"{evaluacion.id}:{evaluacion.descripcion}:{evaluacion.punteo}:{notas_str}\n")
 
-    def agregar_datos(self, id_eval, estatus, descripcion, punteo):
+    def agregar_datos(self, id_eval, descripcion, punteo):
         if id_eval in self.evaluaciones:
             print("Id ya registrado")
         else:
-            self.evaluaciones[id_eval] = Evaluacion(id_eval, estatus, descripcion, punteo)
+            self.evaluaciones[id_eval] = Evaluacion(id_eval, descripcion, punteo)
             self.guardar_datos()
             print('Evaluación agregada correctamente.')
 

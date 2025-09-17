@@ -40,9 +40,8 @@ class Curso:
         return f"|Id: {self.id_curso}|Nombre: {self.nombre}|Instructor: {self.instructor}|"
 
 class Evaluacion:
-    def __init__(self, id, estatus, descripcion, punteo):
+    def __init__(self, id, descripcion, punteo):
         self.__id = id
-        self.estatus = estatus # abierta/cerrada
         self.descripcion = descripcion
         self.punteo = punteo
         self.notas = {}
@@ -51,7 +50,7 @@ class Evaluacion:
         pass
 
     def mostrar_info(self):
-        return f'|Id: {self.id}|Descripción: {self.descripcion}|Estatus: {self.estatus}|Punteo: {self.punteo}|'
+        return f'|Id: {self.id}|Descripción: {self.descripcion}|Punteo: {self.punteo}|'
 
     @property
     def id(self):
