@@ -22,25 +22,45 @@ class Curso:
 
     def agregar_evaluacion(self, evaluacion_id):
         if evaluacion_id not in self.evaluaciones:
-            self.estudiantes.append(evaluacion_id)
+            self.evaluaciones.append(evaluacion_id)
         else:
-            print('Estudiante ya registrado.')
+            print('Evaluación ya registrada.')
+
+    def ver_estudiantes_inscritos(self, usuarios):
+        if self.estudiantes:
+            print(f"Estudiantes inscritos en el curso '{self.nombre}':")
+            for i, estudiante_id in enumerate(self.estudiantes, 1):
+                if estudiante_id in usuarios.usuarios:
+                    estudiante = usuarios.usuarios[estudiante_id]
+                    print(f"{i}. {estudiante.mostrar_info()}")
+        else:
+            print("No hay estudiantes inscritos en este curso.")
+
+    def ver_evaluaciones(self, evaluaciones):
+        if self.evaluaciones:
+            print(f"Evaluaciones del curso '{self.nombre}':")
+            for i, evaluacion_id in enumerate(self.evaluaciones, 1):
+                if evaluacion_id in evaluaciones.evaluaciones:
+                    evaluacion = evaluaciones.evaluaciones[evaluacion_id]
+                    print(f"{i}. {evaluacion.mostrar_info()}")
+        else:
+            print("No hay evaluaciones asignadas a este curso.")
+
     def mostar_info(self):
         return f"|Id: {self.id_curso}|Nombre: {self.nombre}|Instructor: {self.instructor}|"
 
 class Evaluacion:
-    def __init__(self, id, estatus, descripcion, punteo):
+    def __init__(self, id, descripcion, punteo):
         self.__id = id
-        self.estatus = estatus # abierta/cerrada
         self.descripcion = descripcion
         self.punteo = punteo
         self.notas = {}
 
-    def registrar_calificacion(self):
-        pass
+    def registrar_calificacion(self, estudiante, nota):
+        self.notas[estudiante] = nota
 
     def mostrar_info(self):
-        return f'|Id: {self.id}|Descripción: {self.descripcion}|Estatus: {self.estatus}|Punteo: {self.punteo}|'
+        return f'|Id: {self.id}|Descripción: {self.descripcion}|Punteo: {self.punteo}|'
 
     @property
     def id(self):
