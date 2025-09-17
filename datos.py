@@ -3,7 +3,8 @@ from cursos import Evaluacion
 from cursos import Curso
 from usuarios import Estudiante, Instructor
 
-class Datos(ABC):
+class Datos(ABC): #METODO ABSTRACO PARA REUTILIZAR LAS FUNCIONES
+    #CLASE PADRE
     @abstractmethod
     def cargar_datos(self):
         pass
@@ -20,12 +21,12 @@ class Datos(ABC):
     def mostrar_datos(self):
         pass
 
-class DatosUsuarios(Datos):
+class DatosUsuarios(Datos): #CLASE QUE HEREDA DE DATOS
     def __init__(self):
         self.usuarios = {} # {id_usuario: Estudiante/Instructor}
         self.cargar_datos()
 
-    def cargar_datos(self):
+    def cargar_datos(self): #CREA EL ARCHIVO TXT
         try:
             with open("data/usuarios.txt", "r", encoding="utf-8") as archivo:
                 for linea in archivo:
@@ -47,11 +48,11 @@ class DatosUsuarios(Datos):
                                 lista_cursos = []
                             self.usuarios[id] = Instructor(nombre, correo, int(fecha_nacimiento), id)
                             self.usuarios[id].cursos_asignados = lista_cursos
-            print("Usuarios importados desde usuarios.txt")
+            print("Usuarios importados desde usuarios.txt") #SE CREA EL ARCHIVO
         except FileNotFoundError:
             print("No existe el archivo usuarios.txt, se creará uno nuevo al guardar.")
 
-    def guardar_datos(self):
+    def guardar_datos(self): #SE GUARDA EL ARCHIVO TXT
         with open('data/usuarios.txt', 'w', encoding='utf-8') as archivo:
             for usuario in self.usuarios.values():
                 if usuario.rol == 'estudiante':
@@ -78,12 +79,12 @@ class DatosUsuarios(Datos):
             print('No hay usuarios registrados.')
             return False
 
-class DatosCursos(Datos):
+class DatosCursos(Datos): #SEGUNDA CLASE QUE HEREDA DE DATOS
     def __init__(self):
         self.cursos = {} # {id_curso: Curso}
         self.cargar_datos()
 
-    def cargar_datos(self):
+    def cargar_datos(self): #AGREGA EL ARCHIVO DE CURSOS
         try:
             with open("data/cursos.txt","r",encoding="utf-8") as archivo:
                 for linea in archivo:
@@ -104,12 +105,12 @@ class DatosCursos(Datos):
         except FileNotFoundError:
             print("No existe el archivo cursos.txt, se creará uno nuevo al guardar")
 
-    def guardar_datos(self):
+    def guardar_datos(self): #GUARDADN LOS CURSOS
         with open("data/cursos.txt","w",encoding="utf-8") as archivo:
             for id_curso, curso in self.cursos.items():
                 archivo.write(f"{curso.id_curso}:{curso.nombre}:{curso.instructor}:{",".join(curso.estudiantes)}:{",".join(curso.evaluaciones)}\n")
 
-    def agregar_datos(self,id_curso,nombre,instructor):
+    def agregar_datos(self,id_curso,nombre,instructor): #AGREGA LOS CURSOS
         if id_curso in self.cursos:
             print("Id ya registrado")
         else:
@@ -117,7 +118,7 @@ class DatosCursos(Datos):
             self.guardar_datos()
             print("Curso agregado correctamente")
 
-    def mostrar_datos(self):
+    def mostrar_datos(self): #MUESTRA LA LISTA DE CURSOS
         if self.cursos:
             print("\nLista de cursos")
             for i,curso in enumerate(self.cursos.values(),start=1):
@@ -125,12 +126,12 @@ class DatosCursos(Datos):
         else:
             print("No hay cursos registrados")
 
-class DatosEvaluaciones(Datos):
+class DatosEvaluaciones(Datos): #
     def __init__(self):
         self.evaluaciones = {} # {id_eval: Evaluacion}
         self.cargar_datos()
 
-    def cargar_datos(self):
+    def cargar_datos(self): #CARGAN LOS DATOS DE LAS EVALUCIONES
         try:
             with open("data/evaluaciones.txt", "r", encoding="utf-8") as archivo:
                 for linea in archivo:
@@ -146,7 +147,7 @@ class DatosEvaluaciones(Datos):
         except FileNotFoundError:
             print("No existe el archivo evaluaciones.txt, se creara uno al guardar. ")
 
-    def guardar_datos(self):
+    def guardar_datos(self): #GUARDA LAS EVALUACIONES
         with open("data/evaluaciones.txt", "w", encoding="utf-8") as archivo:
             for evaluacion in self.evaluaciones.values():
                 notas = []
@@ -155,7 +156,7 @@ class DatosEvaluaciones(Datos):
                 notas_str = ",".join(notas)
                 archivo.write(f"{evaluacion.id}:{evaluacion.descripcion}:{evaluacion.punteo}:{notas_str}\n")
 
-    def agregar_datos(self, id_eval, descripcion, punteo):
+    def agregar_datos(self, id_eval, descripcion, punteo): #AGREGA LAS EVALUACIONES CON SU PUNTEO
         if id_eval in self.evaluaciones:
             print("Id ya registrado")
         else:

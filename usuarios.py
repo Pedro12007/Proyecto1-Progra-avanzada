@@ -1,16 +1,16 @@
-from abc import ABC, abstractmethod
+from abc import ABC, abstractmethod #SE USA EL METODO ABSTRACTO PARA MOSTRAR INFO
 
-class Usuario(ABC):
+class Usuario(ABC): #CLASE PADRE
     def __init__(self, nombre, correo, fecha_nacimiento):
         self.nombre = nombre
         self.correo = correo
         self.fecha_nacimiento = fecha_nacimiento
 
-    @abstractmethod
+    @abstractmethod #USO DE METODO ABSTRACTO
     def mostrar_info(self):
         return f"|Nombre: {self.nombre}|Correo: {self.correo}|Año de nacimiento: {self.fecha_nacimiento}|"
 
-class Estudiante(Usuario):
+class Estudiante(Usuario): #PRIMERA CLASE HIJA
     def __init__(self, nombre, correo, fecha_nacimiento, carnet, carrera):
         super().__init__(nombre, correo, fecha_nacimiento)
         self.__rol = 'estudiante'
@@ -18,11 +18,11 @@ class Estudiante(Usuario):
         self.__carrera = carrera
         self.cursos=[]
 
-    def mostrar_info(self):
+    def mostrar_info(self): #FUNCION MOSTRAR INFO
         return 'ESTUDIANTE: ' + super().mostrar_info() + f"Carnet: {self.__carnet}|Carrera: {self.carrera}|"
 
-    def acceder_sistema(self, cursos, evaluaciones, usuarios):
-        print('ACCESO AL SISTEMA DE ESTUDIANTE\n')
+    def acceder_sistema(self, cursos, evaluaciones, usuarios): #FUNCION DE ACCEDER SISTEMA
+        print("-"*10 +"ACCESO AL SISTEMA DE ESTUDIANTE" + "-"*10 + "\n")
         while True:
             print("1. Inscribirse en un curso.\n"
                   "2. Consultar mis cursos.\n"
@@ -31,9 +31,9 @@ class Estudiante(Usuario):
                   "5. Volver a menu principal")
             option = input("Ingrese una opción: ")
             match option:
-                case '1':
+                case '1': #INSCRIBIRSE A UN CURSO
                     cursos.mostrar_datos()
-                    curso_id = input('Ingrese el id del curso al que desea inscribirse: ')
+                    curso_id = input('Ingrese el id del curso al que desea inscribirse: ') #SE TIENE QUE CREAR PREVIAMENTE UN CURSO
                     if curso_id in cursos.cursos and curso_id not in self.cursos:
                         self.cursos.append(curso_id)
                         cursos.cursos[curso_id].inscribir_estudiante(self.id)
@@ -46,7 +46,7 @@ class Estudiante(Usuario):
                     if self.cursos:
                         print('Cursos en los que estás inscrito:')
                         for i, id_curso in enumerate(self.cursos, 1):
-                            print(f'{i}. {cursos.cursos[id_curso].mostrar_info()}')
+                            print(f'{i}. {cursos.cursos[id_curso].mostrar_info()}') #MUESTRA LA INFORMACION DEL CURSO ASIGNADO
                     else:
                         print('No estás inscrito a ningún curso.')
 
@@ -107,7 +107,7 @@ class Estudiante(Usuario):
     def rol(self):
         return self.__rol
 
-class Instructor(Usuario):
+class Instructor(Usuario): #SEGUNDA CLASE HIJA
     def __init__(self, nombre, correo, fecha_nacimiento, codigo_empleado):
         super().__init__(nombre, correo, fecha_nacimiento)
         self.__rol = 'instructor'
@@ -122,7 +122,7 @@ class Instructor(Usuario):
         return 'INSTRUCTOR: ' +  super().mostrar_info()+f"|Codigo de empleado: {self.__codigo_empleado}|"
 
     def acceder_sistema(self, cursos, evaluaciones, usuarios):
-        print('ACCESO AL SISTEMA DE INSTRUCTOR\n')
+        print("-"*10 +"ACCESO AL SISTEMA DE INSTRUCTOR" + "-"*10 + "\n")
         while True:
             print("1. Consultar mis cursos asignados")
             print("2. Ver estudiantes inscritos")
@@ -133,11 +133,11 @@ class Instructor(Usuario):
             match opcion:
                 case "1":
                     if self.cursos_asignados:
-                        print('--- Mis Cursos Asignados ---')
+                        print("-"*10 +"MIS CURSOS ASIGNADOS"+ "-"*10)
                         self.ver_cursos(cursos)
-                        print('----------------------------')
+                        print("-"*15)
                     else:
-                        print('No tienes cursos asignados.')
+                        print("-"*10+ "No tienes cursos asignados"+ "-"*10)
 
                 case "2":
                     if not self.cursos_asignados:
@@ -158,9 +158,9 @@ class Instructor(Usuario):
 
                 case "3":
                     if self.cursos_asignados:
-                        print('--- Mis Cursos Asignados ---')
+                        print("-"*10 + "Mis Cursos Asignados"+ "-"*10)
                         self.ver_cursos(cursos)
-                        print('----------------------------')
+                        print('-'*15)
 
                         id_curso = input('Ingrese el id del curso: ')
                         if id_curso in self.cursos_asignados:
@@ -191,9 +191,9 @@ class Instructor(Usuario):
 
                 case '4':
                     if self.cursos_asignados:
-                        print('--- Mis Cursos Asignados ---')
+                        print("-"*10 +"MIS CURSOS ASIGNADOS"+ "-"*10)
                         self.ver_cursos(cursos)
-                        print('----------------------------')
+                        print("-"*15)
 
                         id_curso = input('Ingrese el id del curso: ')
                         if id_curso in self.cursos_asignados:
