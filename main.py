@@ -78,6 +78,7 @@ class MenuPrincipal: #CLASE MENU PRINCIPAL
                             case "3": #OPCION CONSULTAR CURSO
                                     cursos.mostrar_datos() #MUESTRA SI HAY CURSOS ASIGNADOS
                             case "4": #OPCION GENERAR REPORTE
+                                encontrados = False
                                 print("-" + "Reporte de estudiantes con promedio bajo"+"-"*10 + "\n")
                                 for curso in cursos.cursos.values():
                                     notas_por_estudiante={} #{carnet: [notas]}
@@ -87,14 +88,19 @@ class MenuPrincipal: #CLASE MENU PRINCIPAL
                                             for estudiante, nota in evaluacion.notas.items():
                                                 if estudiante not in notas_por_estudiante:
                                                     notas_por_estudiante[estudiante]= []
-                                                notas_por_estudiante[estudiante].append(nota)
+                                                porcentaje_nota = nota/evaluacion.punteo*100
+                                                notas_por_estudiante[estudiante].append(porcentaje_nota)
                                     for estudiante, notas in notas_por_estudiante.items():
                                         if notas:
                                             promedio= sum(notas)/len(notas)
                                             if promedio < 60:
+                                                encontrados = True
                                                 if estudiante in usuarios.usuarios:
                                                     nombre_estudiante= usuarios.usuarios[estudiante].nombre
-                                                print(f"Curso: {curso.nombre}|Estudiante: {nombre_estudiante} ({estudiante}|Promedio: {promedio:.2f}|")
+                                                    print(f"Curso: {curso.nombre}|Estudiante: {nombre_estudiante} ({estudiante}|Promedio: {promedio:.2f}|")
+
+                                if not encontrados:
+                                    print('No hay estudiantes con promedio bajo.')
 
                             case "5": #VOLVER AL MENU PRINCIPAL
                                 break

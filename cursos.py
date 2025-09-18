@@ -46,7 +46,7 @@ class Curso:
         else:
             print("No hay evaluaciones asignadas a este curso.")
 
-    def mostar_info(self):
+    def mostrar_info(self):
         return f"|Id: {self.id_curso}|Nombre: {self.nombre}|Instructor: {self.instructor}|"
 
 class Evaluacion:
