@@ -13,20 +13,23 @@ El menú principal está conformado por 4 opciones:
 
 
 
-```python
+```
 ----------REGISTRO ESTUDIANTES----------
 1. Registrar usuario 
 2. Ingresar al sistema 
 3. Administrar cursos 
 4. Salir
-Ingrese una opción: 
+Ingrese una opción:
+
 ``` 
 
 Aqui el usuario decide que opción elegir para comenzar a usar el programa.
 
 ------------
+
 Si  el usuario elige la opción 1, muestre el siguiente mensaje:
-```
+
+	```
                     ----------REGISTRO DE USUARIO----------
 1. Estudiante
 2. Instructor
@@ -34,7 +37,8 @@ Ingrese una opción:
 ```
 En este apartado, el usuario debe elegir si desea registrar un estudiante o un instructor
 ya que cada uno tiene opciones diferentes.
-En este caso, el usuario eligio la opción número 1: 
+En este caso, el usuario eligio la opción número 1:
+
 ```
 ----------REGISTRAR ESTUDIANTES----------
 Ingrese nombre: Rodrigo
@@ -43,7 +47,7 @@ Ingrese el año de nacimiento: 2000
 Ingrese carnet: 1507525
 Ingrese carrera: Ingenieria en Sistemas
 Usuario agregado correctamente.
-						```
+```
 El usuario guarda al estudiante "Rodrigo" y llena todos los campos que requiere.
 Ahora bien, si el usuario elije la opción número 2:
 ```
