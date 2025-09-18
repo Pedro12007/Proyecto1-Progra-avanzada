@@ -122,7 +122,7 @@ class DatosCursos(Datos): #SEGUNDA CLASE QUE HEREDA DE DATOS
         if self.cursos:
             print("\nLista de cursos")
             for i,curso in enumerate(self.cursos.values(),start=1):
-                print(f"{i}. {curso.mostar_info()}")
+                print(f"{i}. {curso.mostrar_info()}")
         else:
             print("No hay cursos registrados")
 

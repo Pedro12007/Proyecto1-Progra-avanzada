@@ -19,7 +19,7 @@ class Estudiante(Usuario): #PRIMERA CLASE HIJA
         self.cursos=[]
 
     def mostrar_info(self): #FUNCION MOSTRAR INFO
-        return 'ESTUDIANTE: ' + super().mostrar_info() + f"Carnet: {self.__carnet}|Carrera: {self.carrera}|"
+        return 'ESTUDIANTE: ' + super().mostrar_info() + f"Carnet: {self.__carnet}|Carrera: {self.__carrera}|"
 
     def acceder_sistema(self, cursos, evaluaciones, usuarios): #FUNCION DE ACCEDER SISTEMA
         print("-"*10 +"ACCESO AL SISTEMA DE ESTUDIANTE" + "-"*10 + "\n")
