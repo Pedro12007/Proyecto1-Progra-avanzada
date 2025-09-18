@@ -10,10 +10,6 @@ class Curso:
     def id_curso(self):
         return self.__id
 
-    @id_curso.setter #METODO SET
-    def id_curso(self,id):
-        self.__id = id
-
     def inscribir_estudiante(self, estudiante_id): #FUNCION DE INSCRIBIR ESTUDIANTE
         if estudiante_id not in self.estudiantes:
             self.estudiantes.append(estudiante_id)
