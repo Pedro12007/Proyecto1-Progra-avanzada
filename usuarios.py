@@ -87,9 +87,9 @@ class Estudiante(Usuario): #PRIMERA CLASE HIJA
                                     print(f'EVALUACIÓN {evaluaciones.evaluaciones[evaluacion].id} - Nota: {nota}\n')
                                 print()
                         else:
-                            print('No tienes ninguna evaluación asignada.')
+                            print("-"*10 +'No tienes ninguna evaluación asignada.'+ "-"*10)
                     else:
-                        print('No estás inscrito a ningún curso.')
+                        print("-"*10 +'No estás inscrito a ningún curso.'+ "-"*10)
 
                 case '5':
                     break
@@ -144,7 +144,7 @@ class Instructor(Usuario): #SEGUNDA CLASE HIJA
                         print('No tienes cursos asignados para poder ver estudiantes.')
                         continue
 
-                    print('--- Selecciona un curso para ver los estudiantes inscritos ---')
+                    print("-"*10 + 'Selecciona un curso para ver los estudiantes inscritos' + "-"*10)
                     for i, id_curso in enumerate(self.cursos_asignados, 1):
                         print(f'{i}. {cursos.cursos[id_curso].nombre}')
 
@@ -178,16 +178,16 @@ class Instructor(Usuario): #SEGUNDA CLASE HIJA
                                     else:
                                         break
                                 except ValueError:
-                                    print('Punteo no válido. Debe ser un número entero.')
+                                    print("-"*5 + 'Punteo no válido. Debe ser un número entero.'+ "-"*5)
 
                             evaluaciones.agregar_datos(id_evaluacion, descripcion, punteo)
                             cursos.cursos[id_curso].agregar_evaluacion(id_evaluacion)
                             cursos.guardar_datos()
 
                         else:
-                            print('El curso ingresado no existe.')
+                            print("-"*5 + 'El curso ingresado no existe.' + "-"*5)
                     else:
-                        print('No tienes cursos asignados.')
+                        print("-"*10 + 'No tienes cursos asignados.' "-"*10)
 
                 case '4':
                     if self.cursos_asignados:
@@ -229,13 +229,13 @@ class Instructor(Usuario): #SEGUNDA CLASE HIJA
                                             print('Nota inválida. Debe ser un número.')
                                     evaluaciones.guardar_datos()
                                 else:
-                                    print('El curso no tiene evaluaciones.')
+                                    print("-"*10 + 'El curso no tiene evaluaciones.' + "-"*10)
                             else:
-                                print('El curso no tiene estudiantes.')
+                                print("-"*10 + 'El curso no tiene estudiantes.' + "-"*10)
                         else:
-                            print('El curso ingresado no existe.')
+                            print("-"*10 + 'El curso ingresado no existe.'+ "-"*10)
                     else:
-                        print('No tienes cursos asignados.')
+                        print("-" * 10 + 'No tienes cursos asignados.' + "-"*10)
 
                 case '5':
                     break

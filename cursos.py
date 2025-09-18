@@ -24,7 +24,7 @@ class Curso:
 
     def ver_estudiantes_inscritos(self, usuarios): #FUNCION VER ESTUDIANTES INSCRITOS
         if self.estudiantes:
-            print(f"Estudiantes inscritos en el curso '{self.nombre}':")
+            print(f"-"*10+ 'Estudiantes inscritos en el curso ' +"-"*10 + "{self.nombre}':")
             for i, estudiante_id in enumerate(self.estudiantes, 1):
                 if estudiante_id in usuarios.usuarios:
                     estudiante = usuarios.usuarios[estudiante_id]

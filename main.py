@@ -93,7 +93,7 @@ class MenuPrincipal: #CLASE MENU PRINCIPAL
                                     cursos.mostrar_datos() #MUESTRA SI HAY CURSOS ASIGNADOS
                             case "4": #OPCION GENERAR REPORTE
                                 encontrados = False
-                                print("-" + "Reporte de estudiantes con promedio bajo"+"-"*10 + "\n")
+                                print("-"*10 + "Reporte de estudiantes con promedio bajo"+"-"*10 + "\n")
                                 for curso in cursos.cursos.values():
                                     notas_por_estudiante={} #{carnet: [notas]}
                                     for id_evaluacion in curso.evaluaciones:
@@ -114,7 +114,7 @@ class MenuPrincipal: #CLASE MENU PRINCIPAL
                                                     print(f"Curso: {curso.nombre}|Estudiante: {nombre_estudiante} ({estudiante}|Promedio: {promedio:.2f}|")
 
                                 if not encontrados:
-                                    print('No hay estudiantes con promedio bajo.')
+                                    print("-"*10 + 'No hay estudiantes con promedio bajo.'+ "-"*10)
 
                             case "5": #VOLVER AL MENU PRINCIPAL
                                 break

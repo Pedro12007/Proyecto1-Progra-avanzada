@@ -162,7 +162,7 @@ class DatosEvaluaciones(Datos): #
         else:
             self.evaluaciones[id_eval] = Evaluacion(id_eval, descripcion, int(punteo))
             self.guardar_datos()
-            print('Evaluación agregada correctamente.')
+            print("-"*10 +'Evaluación agregada correctamente.'+ "-"*10)
 
     def mostrar_datos(self):
         pass
