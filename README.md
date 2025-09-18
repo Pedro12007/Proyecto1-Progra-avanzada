@@ -13,7 +13,8 @@ El menú principal está conformado por 4 opciones:
 
 
 
-	```
+	
+ ```
 ----------REGISTRO ESTUDIANTES----------
 1. Registrar usuario 
 2. Ingresar al sistema 
