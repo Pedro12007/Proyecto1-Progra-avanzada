@@ -3,7 +3,7 @@ from cursos import Evaluacion
 from cursos import Curso
 from usuarios import Estudiante, Instructor
 
-class Datos(ABC): #METODO ABSTRACO PARA REUTILIZAR LAS FUNCIONES
+class Datos(ABC): #METODO ABSTRACTO PARA REUTILIZAR LAS FUNCIONES
     #CLASE PADRE
     @abstractmethod
     def cargar_datos(self):
@@ -128,7 +128,7 @@ class DatosCursos(Datos): #SEGUNDA CLASE QUE HEREDA DE DATOS
 
 class DatosEvaluaciones(Datos): #
     def __init__(self):
-        self.evaluaciones = {} # {id_eval: Evaluacion}
+        self.evaluaciones = {} # {id_eval: Evaluación}
         self.cargar_datos()
 
     def cargar_datos(self): #CARGAN LOS DATOS DE LAS EVALUCIONES

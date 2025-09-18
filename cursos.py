@@ -16,7 +16,7 @@ class Curso:
         else:
             print("-"*10+'Estudiante ya registrado.'+"-"*10)
 
-    def agregar_evaluacion(self, evaluacion_id): #FUNCION AGREGAR EVALUACION
+    def agregar_evaluacion(self, evaluacion_id): #FUNCION AGREGAR EVALUACIÓN
         if evaluacion_id not in self.evaluaciones:
             self.evaluaciones.append(evaluacion_id)
         else:
@@ -24,7 +24,7 @@ class Curso:
 
     def ver_estudiantes_inscritos(self, usuarios): #FUNCION VER ESTUDIANTES INSCRITOS
         if self.estudiantes:
-            print(f"-"*10+ 'Estudiantes inscritos en el curso ' +"-"*10 + "{self.nombre}':")
+            print("-"*10+ f'Estudiantes inscritos en el curso {self.nombre}' +"-"*10 )
             for i, estudiante_id in enumerate(self.estudiantes, 1):
                 if estudiante_id in usuarios.usuarios:
                     estudiante = usuarios.usuarios[estudiante_id]
@@ -34,7 +34,7 @@ class Curso:
 
     def ver_evaluaciones(self, evaluaciones):
         if self.evaluaciones:
-            print(f"Evaluaciones del curso '{self.nombre}':") #MUESTRA EVALUCIONES SI ESTAN ASIGNADAS
+            print(f"Evaluaciones del curso '{self.nombre}':") #MUESTRA EVALUCIONES SI ESTÁN ASIGNADAS
             for i, evaluacion_id in enumerate(self.evaluaciones, 1):
                 if evaluacion_id in evaluaciones.evaluaciones:
                     evaluacion = evaluaciones.evaluaciones[evaluacion_id]

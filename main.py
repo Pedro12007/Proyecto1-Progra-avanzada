@@ -36,7 +36,7 @@ class MenuPrincipal: #CLASE MENU PRINCIPAL
                     print("1. Estudiante\n"
                           "2. Instructor")
                     option = input("Ingrese una opción: ")
-                    if option == '1': #CUANDO EL USUARIO ELIJE ESTUDIANTE
+                    if option == '1': #CUANDO EL USUARIO ELIGE ESTUDIANTE
                         print("-"*10+"REGISTRAR ESTUDIANTES" +"-"*10)
                         nombre = input("Ingrese nombre: ")
                         correo = input("Ingrese correo: ")
@@ -47,8 +47,8 @@ class MenuPrincipal: #CLASE MENU PRINCIPAL
                             nuevo_estudiante = Estudiante(nombre, correo, nacimiento, carnet, carrera) #SE GUARDA EN LA CLASE ESTUDIANTE
                             usuarios.agregar_datos(nuevo_estudiante) #SE AGREGAN LOS DATOS
                         else:
-                            print("Los campos no pueden quedar vacios")
-                    elif option == '2': #CUANDO EL USUARIO ELIJE INSTRUCTOR
+                            print("Los campos no pueden quedar vacíos")
+                    elif option == '2': #CUANDO EL USUARIO ELIGE INSTRUCTOR
                         print("-"*10+"REGISTRAR INSTRUCTORES"+"-"*10)
                         nombre = input("Ingrese nombre: ")
                         correo = input("Ingrese correo: ")
@@ -60,13 +60,13 @@ class MenuPrincipal: #CLASE MENU PRINCIPAL
                         else:
                             print("Los campos no pueden quedar vacíos.")
                     else:
-                        print("Ingrese una opcion correcta")
+                        print("Ingrese una opción correcta")
                 case '2': #OPCION INGRESAR AL SISTEMA
                     mostrar_datos = usuarios.mostrar_datos()
                     if mostrar_datos:
                         id_usuario = input('Ingrese el id del usuario (carnet o código de empleado): ')
                         if id_usuario in usuarios.usuarios:
-                            usuarios.usuarios[id_usuario].acceder_sistema(cursos, evaluaciones, usuarios) #MUESTRA LOS DATOS DESDE LA FUNCION acceder_sistema
+                            usuarios.usuarios[id_usuario].acceder_sistema(cursos, evaluaciones, usuarios) #MUESTRA LOS DATOS DESDE LA FUNCIÓN acceder_sistema
                         else:
                             print('El id ingresado no existe.')
                 case '3': #OPCION ADMINISTRAR CURSOS

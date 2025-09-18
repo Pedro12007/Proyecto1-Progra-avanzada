@@ -121,7 +121,7 @@ class Instructor(Usuario): #SEGUNDA CLASE HIJA
             print(f'{i}. {cursos.cursos[id_curso].mostrar_info()}')
 
     def mostrar_info(self):
-        return 'INSTRUCTOR: ' +  super().mostrar_info()+f"|Codigo de empleado: {self.__codigo_empleado}|"
+        return 'INSTRUCTOR: ' +  super().mostrar_info()+f"|Código de empleado: {self.__codigo_empleado}|"
 
     def acceder_sistema(self, cursos, evaluaciones, usuarios):
         print("-"*10 +"ACCESO AL SISTEMA DE INSTRUCTOR" + "-"*10 + "\n")

@@ -1,3 +1,0 @@
-estudiante:andres:andre@url.edu.gt:2001:1:sistemas:
-estudiante:Rodrigo:RLopez@correo.url.edu.gt:2000:1507525:Ingenieria en Sistemas:
-instructor:Ricardo:RJurado@correo.url.edu.gt:1990:155332:123
