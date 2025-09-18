@@ -13,7 +13,7 @@ El menú principal está conformado por 4 opciones:
 
 
 
-```
+	```
 ----------REGISTRO ESTUDIANTES----------
 1. Registrar usuario 
 2. Ingresar al sistema 
@@ -29,7 +29,7 @@ Aqui el usuario decide que opción elegir para comenzar a usar el programa.
 
 Si  el usuario elige la opción 1, muestre el siguiente mensaje:
 
-	```
+```
                     ----------REGISTRO DE USUARIO----------
 1. Estudiante
 2. Instructor
