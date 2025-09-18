@@ -135,7 +135,8 @@ Esta opcion muestra estudiantes que tengan el promedio bajo, por el momento al n
 
 ------------
 Si el usuario elije la opcion 5:
-```----------REGISTRO ESTUDIANTES----------
+```
+----------REGISTRO ESTUDIANTES----------
 1. Registrar usuario 
 2. Ingresar al sistema 
 3. Administrar cursos 
