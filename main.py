@@ -1,14 +1,28 @@
 from datos import DatosUsuarios, DatosCursos, DatosEvaluaciones #USAMOS LIBRERIAS PARA IMPORTAR LOS OTROS ARCHIVOS DE DATOS
 from usuarios import Estudiante, Instructor #USAMOS LIBRERIAS PARA IMPORTAR LOS OTROS ARCHIVOS DE USUARIOS
+import datetime
+
 usuarios = DatosUsuarios()
 cursos = DatosCursos()
 evaluaciones = DatosEvaluaciones()
+
+def validacion_nacimiento():
+    while True:
+        try:
+            nacimiento = int(input("Ingrese el año de nacimiento: "))
+            if datetime.datetime.now().year >= nacimiento > 1900:
+                return nacimiento
+            else:
+                print('Por favor, ingrese un año válido.')
+                continue
+        except ValueError:
+            print("Por favor, ingrese un año válido (número entero).")
 
 class MenuPrincipal: #CLASE MENU PRINCIPAL
     def __init__(self):
         pass
 
-    def ejecutar_menu(self): # CLASE EJECUTAR MENU, el cual saldra frente al usuario
+    def ejecutar_menu(self): # CLASE EJECUTAR MENU, el cual saldrá frente al usuario
         while True:
             print("-" * 10 + "REGISTRO ESTUDIANTES" + "-" * 10 + "\n"
                  "1. Registrar usuario \n"
@@ -21,12 +35,12 @@ class MenuPrincipal: #CLASE MENU PRINCIPAL
                     print("-"*10 +"REGISTRO DE USUARIO"+ "-"*10)
                     print("1. Estudiante\n"
                           "2. Instructor")
-                    option = input("Ingrese una opcion: ")
+                    option = input("Ingrese una opción: ")
                     if option == '1': #CUANDO EL USUARIO ELIJE ESTUDIANTE
                         print("-"*10+"REGISTRAR ESTUDIANTES" +"-"*10)
                         nombre = input("Ingrese nombre: ")
                         correo = input("Ingrese correo: ")
-                        nacimiento = int(input("Ingrese el año de nacimiento: "))
+                        nacimiento = validacion_nacimiento()
                         carnet = input("Ingrese carnet: ")
                         carrera = input("Ingrese carrera: ")
                         nuevo_estudiante = Estudiante(nombre, correo, nacimiento, carnet, carrera) #SE GUARDA EN LA CLASE ESTUDIANTE
@@ -35,8 +49,8 @@ class MenuPrincipal: #CLASE MENU PRINCIPAL
                         print("-"*10+"REGISTRAR INSTRUCTORES"+"-"*10)
                         nombre = input("Ingrese nombre: ")
                         correo = input("Ingrese correo: ")
-                        nacimiento = int(input("Ingrese el año de nacimiento: "))
-                        code_empleado = input("Ingrese el codigo de empleado del instructor: ")
+                        nacimiento = validacion_nacimiento()
+                        code_empleado = input("Ingrese el código de empleado del instructor: ")
                         nuevo_instructor = Instructor(nombre, correo, nacimiento, code_empleado) #SE GUARDA EN LA CLASE INSTRUCTOR
                         usuarios.agregar_datos(nuevo_instructor) #SE AGREGAN LOS DATOS AL DICCIONARIO
                 case '2': #OPCION INGRESAR AL SISTEMA
@@ -60,11 +74,11 @@ class MenuPrincipal: #CLASE MENU PRINCIPAL
                             case "1": #OPCION CREAR CURSO
                                 id_curso= input("Ingrese código del curso: ")
                                 nombre= input("Ingrese el nombre del curso: ")
-                                instructor= input("Ingrese el codigo del instructor: ")
+                                instructor= input("Ingrese el código del instructor: ")
                                 cursos.agregar_datos(id_curso,nombre,instructor) #SE CREA EL CURSO Y SE GUARDA
                             case "2": #OPCION ASIGNAR CURSO A INSTRUCTOR
                                 id_curso= input("Ingrese el id del curso: ")
-                                codigo_instructor= input("Ingrese el codigo del instructor: ")
+                                codigo_instructor= input("Ingrese el código del instructor: ")
                                 if id_curso in cursos.cursos and codigo_instructor in usuarios.usuarios:
                                     curso= cursos.cursos[id_curso]
                                     instructor= usuarios.usuarios[codigo_instructor]
