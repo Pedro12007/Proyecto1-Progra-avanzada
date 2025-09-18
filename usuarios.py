@@ -139,7 +139,7 @@ class Instructor(Usuario): #SEGUNDA CLASE HIJA
                         self.ver_cursos(cursos)
                         print("-"*15)
                     else:
-                        print("-"*10+ "No tienes cursos asignados"+ "-"*10)
+                        print("-"*10 + "No tienes cursos asignados" + "-"*10)
 
                 case "2":
                     if not self.cursos_asignados:
@@ -189,7 +189,7 @@ class Instructor(Usuario): #SEGUNDA CLASE HIJA
                         else:
                             print("-"*5 + 'El curso ingresado no existe.' + "-"*5)
                     else:
-                        print("-"*10 + 'No tienes cursos asignados.' "-"*10)
+                        print("-"*10 + 'No tienes cursos asignados.' + "-"*10)
 
                 case '4':
                     if self.cursos_asignados:

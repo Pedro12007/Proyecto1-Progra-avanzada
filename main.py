@@ -119,7 +119,7 @@ class MenuPrincipal: #CLASE MENU PRINCIPAL
                                                 encontrados = True
                                                 if estudiante in usuarios.usuarios:
                                                     nombre_estudiante= usuarios.usuarios[estudiante].nombre
-                                                    print(f"Curso: {curso.nombre}|Estudiante: {nombre_estudiante} ({estudiante}|Promedio: {promedio:.2f}|")
+                                                    print(f"Curso: {curso.nombre}|Estudiante: {nombre_estudiante} ({estudiante}|Promedio: {promedio:.2f}%|")
 
                                 if not encontrados:
                                     print("-"*10 + 'No hay estudiantes con promedio bajo.'+ "-"*10)
