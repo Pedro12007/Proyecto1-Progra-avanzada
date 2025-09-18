@@ -4,7 +4,7 @@
 ### Introducción
 El programa es un gestionador de cursos. tareas. evaluaciones, estudiantes e instructores de forma virtual que tiene como base la programación orientada a objetos usando sus 4 pílares como guia, este sistema debe permitir registrar cursos, inscribir estudiantes, crear evalucaiones y almacenar calificaciones.
 
-#Manual de usuario
+# Manual de usuario
 El menú principal está conformado por 4 opciones:
 1. Registrar usuario
 2. Ingresar al sistema
