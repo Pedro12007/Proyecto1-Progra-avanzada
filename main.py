@@ -43,16 +43,24 @@ class MenuPrincipal: #CLASE MENU PRINCIPAL
                         nacimiento = validacion_nacimiento()
                         carnet = input("Ingrese carnet: ")
                         carrera = input("Ingrese carrera: ")
-                        nuevo_estudiante = Estudiante(nombre, correo, nacimiento, carnet, carrera) #SE GUARDA EN LA CLASE ESTUDIANTE
-                        usuarios.agregar_datos(nuevo_estudiante) #SE AGREGAN LOS DATOS
+                        if nombre and correo and carnet and carrera:
+                            nuevo_estudiante = Estudiante(nombre, correo, nacimiento, carnet, carrera) #SE GUARDA EN LA CLASE ESTUDIANTE
+                            usuarios.agregar_datos(nuevo_estudiante) #SE AGREGAN LOS DATOS
+                        else:
+                            print("Los campos no pueden quedar vacios")
                     elif option == '2': #CUANDO EL USUARIO ELIJE INSTRUCTOR
                         print("-"*10+"REGISTRAR INSTRUCTORES"+"-"*10)
                         nombre = input("Ingrese nombre: ")
                         correo = input("Ingrese correo: ")
                         nacimiento = validacion_nacimiento()
                         code_empleado = input("Ingrese el código de empleado del instructor: ")
-                        nuevo_instructor = Instructor(nombre, correo, nacimiento, code_empleado) #SE GUARDA EN LA CLASE INSTRUCTOR
-                        usuarios.agregar_datos(nuevo_instructor) #SE AGREGAN LOS DATOS AL DICCIONARIO
+                        if nombre and correo and code_empleado:
+                            nuevo_instructor = Instructor(nombre, correo, nacimiento, code_empleado) #SE GUARDA EN LA CLASE INSTRUCTOR
+                            usuarios.agregar_datos(nuevo_instructor) #SE AGREGAN LOS DATOS AL DICCIONARIO
+                        else:
+                            print("Los campos no pueden quedar vacíos.")
+                    else:
+                        print("Ingrese una opcion correcta")
                 case '2': #OPCION INGRESAR AL SISTEMA
                     mostrar_datos = usuarios.mostrar_datos()
                     if mostrar_datos:
@@ -118,6 +126,8 @@ class MenuPrincipal: #CLASE MENU PRINCIPAL
 
                             case "5": #VOLVER AL MENU PRINCIPAL
                                 break
+                            case _:
+                                print("Ingrese una opción válida.")
                 case '4': #SALIR
                     print('Saliendo del programa...')
                     break

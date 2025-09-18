@@ -93,6 +93,8 @@ class Estudiante(Usuario): #PRIMERA CLASE HIJA
 
                 case '5':
                     break
+                case _:
+                    print("Ingrese una opción válida.")
 
 
     @property
@@ -239,6 +241,8 @@ class Instructor(Usuario): #SEGUNDA CLASE HIJA
 
                 case '5':
                     break
+                case _:
+                    print("Ingrese una opción válida.")
 
 
     @property
