@@ -91,9 +91,11 @@ class MenuPrincipal: #CLASE MENU PRINCIPAL
                                 id_curso= input("Ingrese el id del curso: ")
                                 codigo_instructor= input("Ingrese el código del instructor: ")
                                 if id_curso in cursos.cursos and codigo_instructor in usuarios.usuarios and isinstance(usuarios.usuarios[codigo_instructor], Instructor):
+                                    instructor_anterior = cursos.cursos[id_curso].instructor
                                     curso= cursos.cursos[id_curso]
                                     instructor= usuarios.usuarios[codigo_instructor]
                                     curso.instructor = codigo_instructor
+                                    usuarios.usuarios[instructor_anterior].cursos_asignados.remove(id_curso)
                                     instructor.cursos_asignados.append(id_curso)
                                     cursos.guardar_datos()
                                     usuarios.guardar_datos() #SE LE ASIGNA EL CURSO, SE GUARDA
