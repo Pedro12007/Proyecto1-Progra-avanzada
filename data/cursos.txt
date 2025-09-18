@@ -1,2 +1,1 @@
-1:fisica:1:2,3:1
-2:ingenieria aeroespacial con inteligencia artificial 4 patologia 5 avanzado basico:1:2:2
+
