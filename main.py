@@ -83,11 +83,14 @@ class MenuPrincipal: #CLASE MENU PRINCIPAL
                                 id_curso= input("Ingrese código del curso: ")
                                 nombre= input("Ingrese el nombre del curso: ")
                                 instructor= input("Ingrese el código del instructor: ")
-                                cursos.agregar_datos(id_curso,nombre,instructor) #SE CREA EL CURSO Y SE GUARDA
+                                if instructor in usuarios.usuarios and isinstance(usuarios.usuarios[instructor], Instructor):
+                                    cursos.agregar_datos(id_curso,nombre,instructor) #SE CREA EL CURSO Y SE GUARDA
+                                else:
+                                    print('El usuario no existe o no es instructor.')
                             case "2": #OPCION ASIGNAR CURSO A INSTRUCTOR
                                 id_curso= input("Ingrese el id del curso: ")
                                 codigo_instructor= input("Ingrese el código del instructor: ")
-                                if id_curso in cursos.cursos and codigo_instructor in usuarios.usuarios:
+                                if id_curso in cursos.cursos and codigo_instructor in usuarios.usuarios and isinstance(usuarios.usuarios[instructor], Instructor):
                                     curso= cursos.cursos[id_curso]
                                     instructor= usuarios.usuarios[codigo_instructor]
                                     curso.instructor = codigo_instructor
