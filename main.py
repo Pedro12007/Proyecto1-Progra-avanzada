@@ -90,7 +90,7 @@ class MenuPrincipal: #CLASE MENU PRINCIPAL
                             case "2": #OPCION ASIGNAR CURSO A INSTRUCTOR
                                 id_curso= input("Ingrese el id del curso: ")
                                 codigo_instructor= input("Ingrese el código del instructor: ")
-                                if id_curso in cursos.cursos and codigo_instructor in usuarios.usuarios and isinstance(usuarios.usuarios[instructor], Instructor):
+                                if id_curso in cursos.cursos and codigo_instructor in usuarios.usuarios and isinstance(usuarios.usuarios[codigo_instructor], Instructor):
                                     curso= cursos.cursos[id_curso]
                                     instructor= usuarios.usuarios[codigo_instructor]
                                     curso.instructor = codigo_instructor
