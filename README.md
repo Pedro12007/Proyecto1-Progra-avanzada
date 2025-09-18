@@ -1,9 +1,6 @@
 ![](https://scontent.fgua3-5.fna.fbcdn.net/v/t39.30808-6/326497446_2360569570772075_4671112995358082924_n.png?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=s5tQDeqKwlcQ7kNvwHKHEFc&_nc_oc=AdmJGZqPd3tSvT39Ozwa8kfKG4LgmkmqZZd4-kV4YvyHBWH8IYDV9ROOJHffoLnOU7e2X0XGLSEOhH1UluFrAb2u&_nc_zt=23&_nc_ht=scontent.fgua3-5.fna&_nc_gid=vGT1ijyXsqJfU7Q3-DUkOA&oh=00_AfZ_b7-HBEeRjsqqfIlVx3uxzxWbczE-kh33VS3gKs2beA&oe=68D11B7C)
 **Contenido**
 
-[TOCM]
-
-[TOC]
 ### Proyecto 1 Programación avanzada
 ### Introducción
 El programa es un gestionador de cursos. tareas. evaluaciones, estudiantes e instructores de forma virtual que tiene como base la programación orientada a objetos usando sus 4 pílares como guia, este sistema debe permitir registrar cursos, inscribir estudiantes, crear evalucaiones y almacenar calificaciones.
@@ -281,4 +278,5 @@ Ingrese una opción: 4
 Saliendo del programa...
 ```
 El programa cierra exitosamente, terminando asi el ciclo.
-###Final 
+
+### Final 
