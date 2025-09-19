@@ -50,7 +50,7 @@ Ingrese carrera: Ingenieria en Sistemas
 Usuario agregado correctamente.
 ```
 El usuario guarda al estudiante "Rodrigo" y llena todos los campos que requiere.
-Ahora bien, si el usuario elije la opción número 2:
+Ahora bien, ahora si el usuario elije la opcion 2 "Instructor": 
 ```
 Ingrese nombre: Ricardo
 Ingrese correo: RJurado@correo.url.edu.gt
@@ -61,8 +61,7 @@ Usuario agregado correctamente.
 En este caso, el usuario registró al catedratico "Ricardo" y que ha sido guardado.
 
 ------------
-
-Ahora si el usuario elije la opcion 2 "Instructor": 
+Si el usuario elije la opcion 2 "Acceder al sistema", el programa muestra en salida la lista de usuarios que se han agredado, hasta el momento, se agregó un estudiante y un instructor.
 
 ```
 Lista de usuarios:
@@ -70,9 +69,9 @@ ESTUDIANTE: |Nombre: Rodrigo|Correo: RLopez@correo.url.edu.gt|Año de nacimiento
 INSTRUCTOR: |Nombre: Ricardo|Correo: RJurado@correo.url.edu.gt|Año de nacimiento: 1990||Codigo de empleado: 155332|
 Ingrese el id del usuario (carnet o código de empleado): 
 ```
-El programa muestra los estudiantes/instructor que han sido agregados al programa, en este ejemplo, fue agregado 1 estudiante y 1 instructor.
 
 ------------
+
 
 Si el usuario ingresa el carnet del estudiante:
 ```
@@ -94,10 +93,9 @@ El usuario podra mostrar estas opciones, hay que tomar en cuenta que para inscri
 Ingrese una opción: 3
 ----------ADMINISTRAR CURSOS----------
 1. Crear curso
-2. Asignar curso a instructor
-3. Consultar cursos
-4. Generar reportes
-5. Volver a menu principal
+2. Consultar cursos
+3. Generar reportes
+4. Volver a menu principal
 Ingrese una de las opciones: 
 ```
 En esta opcion, veremos que sucede si el usuario elige la opción 1 "Crear curso":
@@ -111,17 +109,7 @@ Curso agregado correctamente
 El usuario creó un nuevo curso
 
 ------------
-Si el usuario elige la opción 2"Asignar un curso a instuctor":
-```
-Ingrese una de las opciones: 2
-Ingrese el id del curso: 123
-Ingrese el codigo del instructor: 155332
-Curso 123 asignado a instructor 155332
-```
-El curso  "Calculo II" que se creó previamente ahora fue asignado al instructor "Ricardo"
-
-------------
-Si el usuario elige la opcion 3:
+Si el usuario elige la opcion 2:
 ```
 Lista de cursos
 1. |Id: 1|Nombre: precalculo|Instructor: 1|
@@ -130,7 +118,7 @@ Lista de cursos
 Muestra la lista de los cursos que han sido asignados, arriba hay algunos ejemplos.
 
 ------------
-Si el usuario elige la opcion 4:
+Si el usuario elige la opcion 3:
 ```
 --------Reporte de estudiantes con promedio bajo----------
 
@@ -139,7 +127,7 @@ No hay estudiantes con promedio bajo.
 Esta opcion muestra estudiantes que tengan el promedio bajo, por el momento al no tener estudiantes, muestra el mensaje "No hay estudiantes con promedio bajo"
 
 ------------
-Si el usuario elije la opcion 5:
+Si el usuario elije la opcion 4:
 ```
 ----------REGISTRO ESTUDIANTES----------
 1. Registrar usuario 
