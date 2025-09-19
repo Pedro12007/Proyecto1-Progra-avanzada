@@ -73,13 +73,16 @@ class MenuPrincipal: #CLASE MENU PRINCIPAL
                     while True:
                         print("-"*10+"ADMINISTRAR CURSOS"+ "-"*10)
                         print("1. Crear curso")
-                        print("2. Asignar curso a instructor")
-                        print("3. Consultar cursos")
-                        print("4. Generar reportes")
-                        print("5. Volver a menu principal")
+                        print("2. Consultar cursos")
+                        print("3. Generar reportes")
+                        print("4. Volver a menu principal")
                         opcion= input("Ingrese una de las opciones: ")
                         match opcion:
                             case "1": #OPCION CREAR CURSO
+                                print("\nInstructores disponibles:")
+                                for id_usuario, usuario in usuarios.usuarios.items():
+                                    if isinstance(usuario,Instructor):  # O si usas rol: if usuario.rol == "instructor":
+                                        print(f"  ID: {id_usuario} | Nombre: {usuario.nombre}")
                                 id_curso= input("Ingrese código del curso: ")
                                 nombre= input("Ingrese el nombre del curso: ")
                                 instructor= input("Ingrese el código del instructor: ")
@@ -87,24 +90,9 @@ class MenuPrincipal: #CLASE MENU PRINCIPAL
                                     cursos.agregar_datos(id_curso,nombre,instructor) #SE CREA EL CURSO Y SE GUARDA
                                 else:
                                     print('El usuario no existe o no es instructor.')
-                            case "2": #OPCION ASIGNAR CURSO A INSTRUCTOR
-                                id_curso= input("Ingrese el id del curso: ")
-                                codigo_instructor= input("Ingrese el código del instructor: ")
-                                if id_curso in cursos.cursos and codigo_instructor in usuarios.usuarios and isinstance(usuarios.usuarios[codigo_instructor], Instructor):
-                                    instructor_anterior = cursos.cursos[id_curso].instructor
-                                    curso= cursos.cursos[id_curso]
-                                    instructor= usuarios.usuarios[codigo_instructor]
-                                    curso.instructor = codigo_instructor
-                                    usuarios.usuarios[instructor_anterior].cursos_asignados.remove(id_curso)
-                                    instructor.cursos_asignados.append(id_curso)
-                                    cursos.guardar_datos()
-                                    usuarios.guardar_datos() #SE LE ASIGNA EL CURSO, SE GUARDA
-                                    print(f"Curso {id_curso} asignado a instructor {codigo_instructor}") #MENSAJE HACIA EL USUARIO
-                                else:
-                                    print("Curso o instructor no encontrado")
-                            case "3": #OPCION CONSULTAR CURSO
+                            case "2": #OPCION CONSULTAR CURSO
                                     cursos.mostrar_datos() #MUESTRA SI HAY CURSOS ASIGNADOS
-                            case "4": #OPCION GENERAR REPORTE
+                            case "3": #OPCION GENERAR REPORTE
                                 encontrados = False
                                 print("-"*10 + "Reporte de estudiantes con promedio bajo"+"-"*10 + "\n")
                                 for curso in cursos.cursos.values():
@@ -129,7 +117,7 @@ class MenuPrincipal: #CLASE MENU PRINCIPAL
                                 if not encontrados:
                                     print("-"*10 + 'No hay estudiantes con promedio bajo.'+ "-"*10)
 
-                            case "5": #VOLVER AL MENU PRINCIPAL
+                            case "4": #VOLVER AL MENU PRINCIPAL
                                 break
                             case _:
                                 print("Ingrese una opción válida.")
