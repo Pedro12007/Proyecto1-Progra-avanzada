@@ -79,12 +79,19 @@ class MenuPrincipal: #CLASE MENU PRINCIPAL
                         opcion= input("Ingrese una de las opciones: ")
                         match opcion:
                             case "1": #OPCION CREAR CURSO
-                                print("\nInstructores disponibles:")
-                                for id_usuario, usuario in usuarios.usuarios.items():
-                                    if isinstance(usuario,Instructor):  # O si usas rol: if usuario.rol == "instructor":
-                                        print(f"  ID: {id_usuario} | Nombre: {usuario.nombre}")
+                                contador_inst = 0
+                                for usuario in usuarios.usuarios.values():
+                                    if isinstance(usuario, Instructor):
+                                        contador_inst += 1
+                                if contador_inst == 0:
+                                    print('No hay instructores disponibles para crear un curso.')
+                                    continue
                                 id_curso= input("Ingrese código del curso: ")
                                 nombre= input("Ingrese el nombre del curso: ")
+                                print("\nInstructores disponibles:")
+                                for id_usuario, usuario in usuarios.usuarios.items():
+                                    if isinstance(usuario,Instructor):
+                                        print(f"  ID: {id_usuario} | Nombre: {usuario.nombre}")
                                 instructor= input("Ingrese el código del instructor: ")
                                 if instructor in usuarios.usuarios and isinstance(usuarios.usuarios[instructor], Instructor):
                                     cursos.agregar_datos(id_curso,nombre,instructor) #SE CREA EL CURSO Y SE GUARDA
